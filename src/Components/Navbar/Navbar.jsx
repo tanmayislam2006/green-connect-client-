@@ -1,8 +1,10 @@
-
 import { Link } from "react-router";
 import Logo from "../../assets/green-connect.png";
 import ThemeToggle from "../Theme/ThemeToggle";
+import { use } from "react";
+import GreenContext from "../../Context/GreenContext";
 const Navbar = () => {
+  const { firebaseUser } = use(GreenContext);
   return (
     <nav className="navbar justify-between  bg-base-100 max-w-7xl mx-auto sticky top-0 z-10 shadow-sm">
       <Link to="/" className="flex items-center">
@@ -20,14 +22,14 @@ const Navbar = () => {
           <li>Home</li>
         </ul>
       </div>
-      <ThemeToggle/>
+      <ThemeToggle />
+      {firebaseUser ? (
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            
             <div className="w-10 rounded-full">
               <img alt="USER PHOTO" src="" />
             </div>
@@ -42,16 +44,17 @@ const Navbar = () => {
             <li>Home</li>
             <li>Home</li>
           </ul>
-        </div> 
-        {/* <div className="">
+        </div>
+      ) : (
+        <div className="">
           <Link
             className="bg-primary px-4 py-2 rounded-xl text-white font-bold"
             to="/login"
           >
             Log In
           </Link>
-        </div> */}
-
+        </div>
+      )}
     </nav>
   );
 };
