@@ -33,6 +33,7 @@ const Login = () => {
     const password=form.password.value
     loginUser(email,password)
     .then((result)=>{
+        console.log(result);
         Swal.fire({
             icon: 'success',
             title: 'Login Successful',
@@ -122,7 +123,7 @@ const Login = () => {
             </a>
             <p className="mt-2 text-gray-600">
               Don't have an account?{' '}
-              <Link  className="text-primary font-medium hover:underline">
+              <Link to='/register' className="text-primary font-medium hover:underline">
 Register 
               </Link>
             </p>

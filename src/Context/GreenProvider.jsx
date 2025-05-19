@@ -23,7 +23,7 @@ const GreenProvider = ({ children }) => {
     errorMessage,
     setErrorMessage,
     googleLogin,
-    loginUser
+    loginUser,setFirebaseUser
   };
   return <GreenContext value={sharedData}>{children}</GreenContext>;
 };
