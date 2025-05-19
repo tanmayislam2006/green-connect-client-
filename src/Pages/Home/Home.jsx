@@ -6,6 +6,7 @@ const Home = () => {
     return (
         <div>
             this is home page {name}
+            <button className='btn btn-primary'>Home</button>
             <p className="text-primary">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique magni, explicabo fugit cum debitis architecto ratione, doloribus facere distinctio nisi consequatur velit nobis cupiditate vero, rerum voluptates accusantium suscipit aspernatur?
             </p>
