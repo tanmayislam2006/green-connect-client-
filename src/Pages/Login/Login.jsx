@@ -3,9 +3,11 @@ import { FcGoogle } from 'react-icons/fc';
 import Logo from "../../assets/green-connect.png"
 import GreenContext from '../../Context/GreenContext';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const Login = () => {
-    const {googleLogin,errorMessage,setErrorMessage}=use(GreenContext)
+    const {googleLogin,errorMessage,setErrorMessage,loginUser}=use(GreenContext)
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
@@ -16,12 +18,37 @@ const Login = () => {
       .catch((error) => {
         console.error(error);
         setErrorMessage(error.message)
-        toast.error(errorMessage)
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: errorMessage,
+        })
       });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form=e.target
+    const email=form.email.value
+    const password=form.password.value
+    loginUser(email,password)
+    .then((result)=>{
+        Swal.fire({
+            icon: 'success',
+            title: 'Login Successful',
+            text: 'Welcome back!',
+        })
+    })
+    .catch((error)=>{
+        setErrorMessage(error.message)
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: errorMessage,
+        })
+
+    })
+
     
   };
 
@@ -83,7 +110,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-[#3e8e41] transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+              className="w-full bg-primary cursor-pointer text-white py-2 px-4 rounded-md hover:bg-[#3e8e41] transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
             >
              Log In
             </button>
@@ -95,9 +122,9 @@ const Login = () => {
             </a>
             <p className="mt-2 text-gray-600">
               Don't have an account?{' '}
-              <a href="#" className="text-primary font-medium hover:underline">
-                Sign up
-              </a>
+              <Link  className="text-primary font-medium hover:underline">
+Register 
+              </Link>
             </p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import GreenContext from "./GreenContext";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 const googleProvider = new GoogleAuthProvider();
 import auth from "../Firebase/firebase.init.js";
 
@@ -12,6 +12,10 @@ const GreenProvider = ({ children }) => {
     setLoading('true')
     return signInWithPopup(auth, googleProvider);
   };
+  const loginUser=(email,password)=>{
+    setLoading(true)
+    return signInWithEmailAndPassword(auth,email,password)
+  }
   const sharedData = {
     firebaseUser,
     loading,
@@ -19,6 +23,7 @@ const GreenProvider = ({ children }) => {
     errorMessage,
     setErrorMessage,
     googleLogin,
+    loginUser
   };
   return <GreenContext value={sharedData}>{children}</GreenContext>;
 };
