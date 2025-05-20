@@ -20,7 +20,7 @@ const Register = () => {
        const user=result.user
         const userProfile = {
           email: user?.email,
-          displayName: user?.displayName,
+          fullName: user?.displayName,
           photoURL: user?.photoURL,
           creationTime: user?.metadata?.creationTime,
           lastSignInTime: user?.metadata?.lastSignInTime,

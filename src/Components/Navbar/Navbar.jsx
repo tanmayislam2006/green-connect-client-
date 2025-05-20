@@ -3,15 +3,24 @@ import Logo from "../../assets/green-connect.png";
 import ThemeToggle from "../Theme/ThemeToggle";
 import { use } from "react";
 import GreenContext from "../../Context/GreenContext";
+import { toast } from "react-toastify";
 const Navbar = () => {
-  const { firebaseUser } = use(GreenContext);
+  const {logoutUser,user,} = use(GreenContext);
+  console.log(user);
+  const handleLogOut = () => {
+    logoutUser()
+      .then(res => {
+        toast.success('Logout Successful');
+      })
+      .catch(err => toast.error('Logout Failed ' + err.message));
+  };
   return (
     <nav className="navbar justify-between  bg-base-100 max-w-7xl mx-auto sticky top-0 z-10 shadow-sm">
       <Link to="/" className="flex items-center">
         <div className="w-16 rounded-full">
           <img alt="green connect logo" src={Logo} className="bg-transparent" />
         </div>
-        <p className="font-bold text-xl">Green Connect</p>
+        <p className="font-bold text-xl hidden md:block">Green Connect</p>
       </Link>
       <div className="">
         <ul className="hidden md:flex gap-6">
@@ -23,16 +32,19 @@ const Navbar = () => {
         </ul>
       </div>
       <ThemeToggle />
-      {firebaseUser ? (
-        <div className="dropdown dropdown-end">
+      {user ? (
+        <div className="dropdown dropdown-end mr-5">
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost btn-circle avatar"
+            className="btn btn-ghost btn-circle avatar relative group"
           >
             <div className="w-10 rounded-full">
-              <img alt="USER PHOTO" src="" />
+              <img alt="USER PHOTO" src={user?.photoURL} />
             </div>
+            <p className="absolute left-1/2 -translate-x-1/2 -bottom-10  bg-gray-800 text-white text-xs rounded px-3 py-1 opacity-0 group-hover:opacity-100 transition pointer-events-none whitespace-nowrap z-50">
+              {user?.fullName}
+            </p>
           </div>
           <ul
             tabIndex={0}
@@ -43,6 +55,11 @@ const Navbar = () => {
             <li>Home</li>
             <li>Home</li>
             <li>Home</li>
+            {user && <li>
+              <button
+              onClick={handleLogOut}
+                 className="btn">Log Out</button>
+              </li>}
           </ul>
         </div>
       ) : (

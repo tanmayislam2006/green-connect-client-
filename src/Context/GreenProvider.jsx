@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GreenContext from "./GreenContext";
 import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 const googleProvider = new GoogleAuthProvider();
 import auth from "../Firebase/firebase.init.js";
 
 const GreenProvider = ({ children }) => {
   const [firebaseUser, setFirebaseUser] = useState(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const createAccount = (email, password) => {
@@ -25,6 +28,27 @@ const GreenProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+    const logoutUser=()=>{
+      return signOut(auth)
+    }
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        setFirebaseUser(currentUser);
+        setLoading(false);
+      });
+      return () => {
+        unsubscribe();
+      };
+    }, []);
+    useEffect(() => {
+      if (firebaseUser?.uid) {
+        fetch(`http://localhost:5000/user/${firebaseUser.uid}`)
+          .then((res) => res.json())
+          .then((data) => setUser(data));
+      } else {
+        setUser(null); 
+      }
+    }, [firebaseUser]);
   const sharedData = {
     firebaseUser,
     loading,
@@ -35,6 +59,9 @@ const GreenProvider = ({ children }) => {
     loginUser,
     setFirebaseUser,
     createAccount,
+    logoutUser,
+    user,
+
   };
   return <GreenContext value={sharedData}>{children}</GreenContext>;
 };
