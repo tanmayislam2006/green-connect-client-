@@ -1,18 +1,53 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import Logo from "../../assets/green-connect.png";
 import ThemeToggle from "../Theme/ThemeToggle";
 import { use } from "react";
 import GreenContext from "../../Context/GreenContext";
 import { toast } from "react-toastify";
+const links = (
+  <>
+    <li>
+      {" "}
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "font-bold text-primary underline" : "text-gray-600"
+        }
+        to={"/"}
+      >
+        Home
+      </NavLink>
+    </li>
+    <li>
+      {" "}
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "font-bold text-primary underline" : "text-gray-600"
+        }
+        to={"/"}
+      >
+        Home
+      </NavLink>
+    </li>
+
+  </>
+);
+const dropdownLinks=<>
+<li>
+  <Link>Home</Link>
+</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</>
 const Navbar = () => {
-  const {logoutUser,user,} = use(GreenContext);
-  console.log(user);
+  const { logoutUser, user } = use(GreenContext);
   const handleLogOut = () => {
     logoutUser()
-      .then(res => {
-        toast.success('Logout Successful');
+      .then((res) => {
+        toast.success("Logout Successful");
       })
-      .catch(err => toast.error('Logout Failed ' + err.message));
+      .catch((err) => toast.error("Logout Failed " + err.message));
   };
   return (
     <nav className="navbar justify-between  bg-base-100 max-w-7xl mx-auto sticky top-0 z-10 shadow-sm">
@@ -23,13 +58,7 @@ const Navbar = () => {
         <p className="font-bold text-xl hidden md:block">Green Connect</p>
       </Link>
       <div className="">
-        <ul className="hidden md:flex gap-6">
-          <li>Home</li>
-          <li>Home</li>
-          <li>Home</li>
-          <li>Home</li>
-          <li>Home</li>
-        </ul>
+        <ul className="hidden md:flex gap-6">{links}</ul>
       </div>
       <ThemeToggle />
       {user ? (
@@ -55,11 +84,13 @@ const Navbar = () => {
             <li>Home</li>
             <li>Home</li>
             <li>Home</li>
-            {user && <li>
-              <button
-              onClick={handleLogOut}
-                 className="btn">Log Out</button>
-              </li>}
+            {user && (
+              <li>
+                <button onClick={handleLogOut} className="btn">
+                  Log Out
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       ) : (
