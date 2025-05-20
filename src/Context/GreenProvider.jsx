@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 import GreenContext from "./GreenContext";
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 const googleProvider = new GoogleAuthProvider();
 import auth from "../Firebase/firebase.init.js";
 
 const GreenProvider = ({ children }) => {
   const [firebaseUser, setFirebaseUser] = useState(null);
-  const [loading, setLoading]=useState(true)
-  const  [errorMessage,setErrorMessage]=useState('')
+  const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  const createAccount = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
   const googleLogin = () => {
-    setLoading('true')
+    setLoading("true");
     return signInWithPopup(auth, googleProvider);
   };
-  const loginUser=(email,password)=>{
-    setLoading(true)
-    return signInWithEmailAndPassword(auth,email,password)
-  }
+  const loginUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
   const sharedData = {
     firebaseUser,
     loading,
@@ -23,7 +32,9 @@ const GreenProvider = ({ children }) => {
     errorMessage,
     setErrorMessage,
     googleLogin,
-    loginUser,setFirebaseUser
+    loginUser,
+    setFirebaseUser,
+    createAccount,
   };
   return <GreenContext value={sharedData}>{children}</GreenContext>;
 };
