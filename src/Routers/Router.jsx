@@ -9,6 +9,7 @@ import BrowseTips from "../Pages/BrowseTips/BrowseTips";
 import ShareTips from "../Pages/ShareTips/ShareTips";
 import MyTips from "../Pages/MyTips/MyTips";
 import Loader from "../Components/Loader/Loader";
+import Update from "../Pages/Update/Update";
 
 const router=createBrowserRouter([
     {path:'/',
@@ -45,6 +46,12 @@ const router=createBrowserRouter([
             {
                 path:"/myTips",
                 element:<MyTips/>
+            },
+            {
+                path:"/updateTip/:id",
+                element:<Update/>,
+                loader:({params})=>fetch(`http://localhost:5000/updatetip/${params.id}`),
+                hydrateFallbackElement:<Loader/>
             }
 
 

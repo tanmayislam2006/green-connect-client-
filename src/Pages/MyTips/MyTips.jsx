@@ -2,11 +2,13 @@ import React, { use, useEffect, useState } from "react";
 import { FaPen, FaTrash } from "react-icons/fa";
 import GreenContext from "../../Context/GreenContext";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const MyTips = () => {
   const { firebaseUser } = use(GreenContext);
   const [refresh, setRefresh] = useState(false);
   const [myTips, setMyTips] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`http://localhost:5000/mytips/${firebaseUser?.uid}`)
       .then((res) => res.json())
@@ -97,7 +99,10 @@ const MyTips = () => {
                   {tip.availability}
                 </td>
                 <td className="px-4 py-2 align-middle">
-                  <button className="text-yellow-500 cursor-pointer mx-3 my-2 ">
+                  <button
+                    onClick={() => navigate(`/updateTip/${tip._id}`)}
+                    className="text-yellow-500 cursor-pointer mx-3 my-2 "
+                  >
                     <FaPen size={20} />
                   </button>
                   <button
