@@ -10,6 +10,7 @@ import ShareTips from "../Pages/ShareTips/ShareTips";
 import MyTips from "../Pages/MyTips/MyTips";
 import Loader from "../Components/Loader/Loader";
 import Update from "../Pages/Update/Update";
+import DetailsTip from "../Pages/DetailsTip/DetailsTip";
 
 const router=createBrowserRouter([
     {path:'/',
@@ -52,7 +53,15 @@ const router=createBrowserRouter([
                 element:<Update/>,
                 loader:({params})=>fetch(`http://localhost:5000/updatetip/${params.id}`),
                 hydrateFallbackElement:<Loader/>
-            }
+            },
+            {
+                path:"/detailtip/:id",
+                element:<DetailsTip/>,
+                loader:({params})=>fetch(`http://localhost:5000/detailtip/${params.id}`),
+                hydrateFallbackElement:<Loader/>
+            },
+
+            
 
 
         ]

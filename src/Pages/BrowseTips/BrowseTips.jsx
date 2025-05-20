@@ -1,10 +1,12 @@
+import Link from 'daisyui/components/link';
 import React from 'react';
 import { FaEye } from "react-icons/fa";
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 
 
 const BrowseTips = () => {
     const tips=useLoaderData()
+    const navigate =useNavigate()
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-200 py-10 px-2 flex flex-col items-center">
       <h1 className="text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
@@ -46,7 +48,8 @@ const BrowseTips = () => {
                   {tip.category}
                 </td>
                 <td className="py-3 px-4 text-center">
-                  <button
+                  <button 
+                  onClick={()=>navigate(`/detailtip/${tip._id}`)}
                     className="ap-2 bg-primary text-white px-4 py-2 rounded-md cursor-pointer font-semibold shadow"
                   >
                     See More

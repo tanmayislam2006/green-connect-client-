@@ -161,7 +161,7 @@ const Update = () => {
         <div className="md:col-span-2 flex justify-end">
           <button
             type="submit"
-            className="bg-primary text-white px-6 py-2 rounded-md font-semibold"
+            className="bg-primary cursor-pointer text-white px-6 py-2 rounded-md font-semibold"
           >
             Update Tip
           </button>
