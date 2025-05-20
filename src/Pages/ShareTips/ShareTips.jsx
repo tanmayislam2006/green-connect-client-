@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import GreenContext from "../../Context/GreenContext";
+import { toast } from "react-toastify";
+
 
 const categories = [
   "Composting",
@@ -18,7 +20,24 @@ const ShareTips = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    const tipsInfo = {
+      ...data,
+      uid: user?.uid,
+      photoURL: user?.photoURL,
+    };
+    fetch("http://localhost:5000/sharetips", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tipsInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+            toast.success("Your gardening tip has been shared successfully!");
+        }
+      });
 
     form.reset();
   };
@@ -114,12 +133,12 @@ const ShareTips = () => {
                 Your Name
               </label>
               <input
-                value={user?.fullName}
+                defaultValue={user?.fullName}
                 type="text"
                 name="userName"
                 placeholder="Your Name"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary dark:bg-gray-700 dark:text-white"
-                required
+                readOnly
               />
             </div>
             <div>
@@ -127,12 +146,12 @@ const ShareTips = () => {
                 Your Email
               </label>
               <input
-                value={user?.email}
+                defaultValue={user?.email}
                 type="email"
                 name="userEmail"
                 placeholder="your@email.com"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary dark:bg-gray-700 dark:text-white"
-                required
+                readOnly
               />
             </div>
           </div>

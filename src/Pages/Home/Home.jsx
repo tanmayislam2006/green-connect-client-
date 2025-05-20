@@ -4,7 +4,7 @@ import Loader from '../../Components/Loader/Loader';
 
 const Home = () => {
     const {user}=use(GreenContext)
-    console.log(user);
+
     return (
         <div>
             this is home page {name}

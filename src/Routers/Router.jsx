@@ -8,6 +8,7 @@ import ExploreGardener from "../Pages/ExploreGardener/ExploreGardener";
 import BrowseTips from "../Pages/BrowseTips/BrowseTips";
 import ShareTips from "../Pages/ShareTips/ShareTips";
 import MyTips from "../Pages/MyTips/MyTips";
+import Loader from "../Components/Loader/Loader";
 
 const router=createBrowserRouter([
     {path:'/',
@@ -32,7 +33,10 @@ const router=createBrowserRouter([
             },
             {
                 path:"/browseTips",
-                element:<BrowseTips/>
+                element:<BrowseTips/>,
+                loader:()=>fetch('http://localhost:5000/browsetips'),
+                hydrateFallbackElement:<Loader/>
+
             },
             {
                 path:"/shareTips",
