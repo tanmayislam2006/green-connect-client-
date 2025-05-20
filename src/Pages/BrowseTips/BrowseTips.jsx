@@ -47,9 +47,8 @@ const BrowseTips = () => {
                 </td>
                 <td className="py-3 px-4 text-center">
                   <button
-                    className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-md hover:bg-green-700 transition font-semibold shadow"
+                    className="ap-2 bg-primary text-white px-4 py-2 rounded-md cursor-pointer font-semibold shadow"
                   >
-                    <FaEye className="text-lg" />
                     See More
                   </button>
                 </td>

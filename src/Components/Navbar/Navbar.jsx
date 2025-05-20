@@ -20,7 +20,7 @@ const Navbar = () => {
         {" "}
         <NavLink
           className={({ isActive }) =>
-            isActive ? "font-bold text-primary underline" : "text-gray-400"
+            isActive ? "font-bold text-primary underline" : "text-gray-500"
           }
           to={"/"}
         >
@@ -31,7 +31,7 @@ const Navbar = () => {
         {" "}
         <NavLink
           className={({ isActive }) =>
-            isActive ? "font-bold text-primary underline" : "text-gray-400"
+            isActive ? "font-bold text-primary underline" : "text-gray-500"
           }
           to={"/exploreGardener"}
         >
@@ -42,7 +42,7 @@ const Navbar = () => {
         {" "}
         <NavLink
           className={({ isActive }) =>
-            isActive ? "font-bold text-primary underline" : "text-gray-400"
+            isActive ? "font-bold text-primary underline" : "text-gray-500"
           }
           to={"/browseTips"}
         >
@@ -55,7 +55,7 @@ const Navbar = () => {
             {" "}
             <NavLink
               className={({ isActive }) =>
-                isActive ? "font-bold text-primary underline" : "text-gray-400"
+                isActive ? "font-bold text-primary underline" : "text-gray-500"
               }
               to={"/shareTips"}
             >
@@ -66,7 +66,7 @@ const Navbar = () => {
             {" "}
             <NavLink
               className={({ isActive }) =>
-                isActive ? "font-bold text-primary underline" : "text-gray-400"
+                isActive ? "font-bold text-primary underline" : "text-gray-500"
               }
               to={"/myTips"}
             >
@@ -81,28 +81,28 @@ const Navbar = () => {
   const dropdownLinks = (
     <>
       <li>
-        <Link className="text-gray-400" to="/">
+        <Link className="text-gray-500" to="/">
           Home
         </Link>
       </li>
       <li>
-        <Link className="text-gray-400" to="/exploreGardener">
+        <Link className="text-gray-500" to="/exploreGardener">
           Explore Gardeners
         </Link>
       </li>
       <li>
-        <Link className="text-gray-400" to="/browseTips">
+        <Link className="text-gray-500" to="/browseTips">
           Browse Tips
         </Link>
       </li>
       <>
         <li>
-          <Link className="text-gray-400" to="/shareTips">
+          <Link className="text-gray-500" to="/shareTips">
             Share Tips
           </Link>
         </li>
         <li>
-          <Link className="text-gray-400" to="/myTips">
+          <Link className="text-gray-500" to="/myTips">
             My Tips
           </Link>
         </li>
