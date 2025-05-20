@@ -1,20 +1,19 @@
-import React, { use } from 'react';
-import GreenContext from '../Context/GreenContext';
-import { Navigate, useLocation } from 'react-router';
-import Loader from '../Components/Loader/Loader';
+import React, { use } from "react";
+import Loader from "../Components/Loader/Loader";
+import { Navigate, useLocation } from "react-router";
+import GreenContext from "../Context/GreenContext";
 
-const PrivateRouter = ({children}) => {
-    const {loading,user}=use(GreenContext);
-    const location=useLocation();
+const PrivateRouter = ({ children }) => {
+  const location = useLocation();
+  const { user, loading } = use(GreenContext);
   if (loading) {
     return <Loader />;
   }
   if (!user) {
-    return <Navigate state={location?.pathname} to="/login"></Navigate>;
+    return <Navigate to="/login" state={location.pathname} />;
   }
 
   return children;
 };
-
 
 export default PrivateRouter;

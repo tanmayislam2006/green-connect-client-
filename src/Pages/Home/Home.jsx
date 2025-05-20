@@ -3,7 +3,8 @@ import GreenContext from '../../Context/GreenContext';
 import Loader from '../../Components/Loader/Loader';
 
 const Home = () => {
-    const {name}=use(GreenContext)
+    const {user}=use(GreenContext)
+    console.log(user);
     return (
         <div>
             this is home page {name}

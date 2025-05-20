@@ -4,11 +4,13 @@ import Logo from "../../assets/green-connect.png";
 import GreenContext from "../../Context/GreenContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const Login = () => {
   const { googleLogin, errorMessage, setErrorMessage, loginUser } =
     use(GreenContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
@@ -28,6 +30,8 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {});
         }
+        navigate(location?.state || "/");
+
         toast.success("Login successful!");
       })
       .catch((error) => {
@@ -63,6 +67,7 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {});
         }
+        navigate(location?.state || "/");
         Swal.fire({
           icon: "success",
           title: "Login Successful",
