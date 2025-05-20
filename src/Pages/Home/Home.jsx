@@ -5,15 +5,16 @@ import Hero from "../../Components/Hero/Hero";
 import About from "../../Components/About/About";
 import Community from "../../Components/Community/Community";
 import Aos from "aos";
+import Success from "../../Components/Success/Success";
 
 const Home = () => {
   const { user } = use(GreenContext);
-  useEffect(()=>{
+  useEffect(() => {
     Aos.init({
       duration: 1000,
       once: false,
-    })
-  },[])
+    });
+  }, []);
 
   return (
     <div>
@@ -22,8 +23,10 @@ const Home = () => {
       <About />
 
       {/* Community  Section */}
-      <Community/>
+      <Community />
 
+      {/*  Success Stories */}
+        <Success/>
     </div>
   );
 };

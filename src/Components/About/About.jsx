@@ -1,9 +1,14 @@
-import React from "react";
-import Logo from "../../assets/green-connect.png"
+import React, { useEffect } from "react";
+import Logo from "../../assets/green-connect.png";
+import "aos/dist/aos.css";
+import Aos from "aos";
 const About = () => {
+  useEffect(() => {
+    Aos.init({ duration: 1000, once: false });
+  }, []);
   return (
-    <section className="w-full max-w-6xl mx-auto my-10 px-4 py-10 rounded-2xl  dark:bg-gray-800 shadow-md flex flex-col-reverse md:flex-row items-center gap-8">
-      <div className="flex-1">
+    <section className="w-full max-w-6xl mx-auto my-10 px-4 py-10 rounded-2xl dark:bg-gray-800 shadow-md flex flex-col-reverse md:flex-row items-center gap-8">
+      <div className="flex-1" data-aos="fade-right" data-aos-duration="1000">
         <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
           About Green Connect
         </h2>
@@ -20,7 +25,11 @@ const About = () => {
           <li>Connect with a supportive, eco-friendly community.</li>
         </ul>
       </div>
-      <div className="flex-1 flex justify-center">
+      <div
+        className="flex-1 flex justify-center"
+        data-aos="fade-left"
+        data-aos-duration="1000"
+      >
         <img
           src={Logo}
           alt="About Green Connect"
