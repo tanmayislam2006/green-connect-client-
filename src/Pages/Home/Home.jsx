@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import GreenContext from '../../Context/GreenContext';
+import Loader from '../../Components/Loader/Loader';
 
 const Home = () => {
     const {name}=use(GreenContext)

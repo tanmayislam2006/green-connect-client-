@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import GreenContext from "../../Context/GreenContext";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { errorMessage, setErrorMessage, googleLogin, createAccount } =
@@ -16,12 +17,39 @@ const Register = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
+       const user=result.user
+        const userProfile = {
+          email: user?.email,
+          displayName: user?.displayName,
+          photoURL: user?.photoURL,
+          creationTime: user?.metadata?.creationTime,
+          lastSignInTime: user?.metadata?.lastSignInTime,
+          uid: user?.uid,
+        };
+        fetch("http://localhost:5000/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userProfile),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              setErrorMessage("");
+            }
+          });
         setErrorMessage("");
         navigate(location?.state || "/");
         toast.success("Registration Successful");
       })
       .catch((error) => {
         setErrorMessage(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Failed...",
+          text: error.message,
+        })
       });
   };
 
@@ -56,12 +84,23 @@ const Register = () => {
           ...data,
           creationTime: result.user?.metadata?.creationTime,
           lastSignInTime: result.user?.metadata?.lastSignInTime,
-          uid:result.user?.uid,
+          uid: result.user?.uid,
         };
-        console.log(userProfile);
-        setErrorMessage("");
-        toast.success("Registration Successful");
-        navigate(location?.state || "/");
+        fetch("http://localhost:5000/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userProfile),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              setErrorMessage("");
+              toast.success("Registration Successful");
+              navigate(location?.state || "/");
+            }
+          });
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -155,7 +194,7 @@ const Register = () => {
                 Password <span className="text-red-700">*</span>
               </label>
               <input
-              value={"123456Aa@"}
+                value={"123456Aa@"}
                 type={showPass ? "text" : "password"}
                 id="password"
                 name="password"
