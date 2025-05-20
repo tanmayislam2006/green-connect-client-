@@ -1,5 +1,6 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import React from "react";
+import { useLoaderData } from "react-router";
+import { toast } from "react-toastify";
 
 const categories = [
   "Composting",
@@ -13,11 +14,31 @@ const categories = [
 
 const Update = () => {
   const [tip] = useLoaderData();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch(`http://localhost:5000/updatetip/${tip._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("Your gardening tip has been updated successfully!");
+        } else {
+          toast.error("No changes made to the tip.");
+        }
+      });
+  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-green-200 py-8 px-2">
-      <form
-        className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8 w-full max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-8"
-      >
+      <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8 w-full max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-8">
         <h2 className="md:col-span-2 text-2xl font-bold text-primary text-center mb-4">
           Update Your Garden Tip
         </h2>
