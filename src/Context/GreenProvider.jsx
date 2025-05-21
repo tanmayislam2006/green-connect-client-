@@ -42,7 +42,7 @@ const GreenProvider = ({ children }) => {
   }, []);
   useEffect(() => {
     if (firebaseUser?.uid) {
-      fetch(`http://localhost:5000/user/${firebaseUser.uid}`)
+      fetch(`https://green-connect-server.onrender.com/user/${firebaseUser.uid}`)
         .then((res) => res.json())
         .then((data) => {
           setUser(data);

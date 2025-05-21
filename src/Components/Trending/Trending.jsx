@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 const Trending = () => {
   const [trendingTips, setTrendingTips] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/browsetips")
+    fetch("https://green-connect-server.onrender.com/browsetips")
       .then((res) => res.json())
       .then((data) => setTrendingTips(data));
   }, []);

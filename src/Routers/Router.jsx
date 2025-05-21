@@ -35,12 +35,14 @@ const router = createBrowserRouter([
       {
         path: "/browseTips",
         element: <BrowseTips />,
-        loader: () => fetch("http://localhost:5000/browsetips"),
+        loader: () => fetch("https://green-connect-server.onrender.com/browsetips"),
         hydrateFallbackElement: <Loader />,
       },
       {
         path: "/shareTips",
-        element: <ShareTips />,
+        element: <PrivateRouter>
+          <ShareTips/>
+        </PrivateRouter>,
       },
       {
         path: "/myTips",
@@ -52,16 +54,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateTip/:id",
-        element: <Update />,
+        element: (
+          <PrivateRouter>
+            <Update />
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/updatetip/${params.id}`),
+          fetch(`https://green-connect-server.onrender.com/updatetip/${params.id}`),
         hydrateFallbackElement: <Loader />,
       },
       {
         path: "/detailtip/:id",
-        element: <DetailsTip />,
+        element: (
+          <PrivateRouter>
+            <DetailsTip />
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/detailtip/${params.id}`),
+          fetch(`https://green-connect-server.onrender.com/detailtip/${params.id}`),
         hydrateFallbackElement: <Loader />,
       },
     ],

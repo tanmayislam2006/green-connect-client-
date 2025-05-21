@@ -25,7 +25,7 @@ const ShareTips = () => {
       uid: user?.uid,
       photoURL: user?.photoURL,
     };
-    fetch("http://localhost:5000/sharetips", {
+    fetch("https://green-connect-server.onrender.com/sharetips", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -17,7 +17,7 @@ const Login = () => {
         const user = result.user;
         if (user) {
           // update log in information   in db
-          fetch("http://localhost:5000/login", {
+          fetch("https://green-connect-server.onrender.com/login", {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -54,7 +54,7 @@ const Login = () => {
         const user = result.user;
         if (user) {
           // update information in db
-          fetch("http://localhost:5000/login", {
+          fetch("https://green-connect-server.onrender.com/login", {
             method: "PATCH",
             headers: {
               "content-type": "application/json",

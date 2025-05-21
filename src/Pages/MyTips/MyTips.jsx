@@ -10,7 +10,7 @@ const MyTips = () => {
   const [myTips, setMyTips] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`http://localhost:5000/mytips/${firebaseUser?.uid}`)
+    fetch(`https://green-connect-server.onrender.com/mytips/${firebaseUser?.uid}`)
       .then((res) => res.json())
       .then((data) => {
         setMyTips(data);
@@ -27,7 +27,7 @@ const MyTips = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/deletetip/${id}`, {
+        fetch(`https://green-connect-server.onrender.com/deletetip/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
