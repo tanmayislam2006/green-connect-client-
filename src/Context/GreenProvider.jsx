@@ -10,7 +10,6 @@ import {
 } from "firebase/auth";
 const googleProvider = new GoogleAuthProvider();
 import auth from "../Firebase/firebase.init.js";
-
 const GreenProvider = ({ children }) => {
   const [firebaseUser, setFirebaseUser] = useState(null);
   const [user, setUser] = useState(null);
@@ -42,11 +41,13 @@ const GreenProvider = ({ children }) => {
   }, []);
   useEffect(() => {
     if (firebaseUser?.uid) {
-      fetch(`https://green-connect-server.onrender.com/user/${firebaseUser.uid}`)
+      fetch(
+        `https://green-connect-server.onrender.com/user/${firebaseUser.uid}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setUser(data);
-          setLoading(false)
+          setLoading(false);
         });
     } else {
       setUser(null);

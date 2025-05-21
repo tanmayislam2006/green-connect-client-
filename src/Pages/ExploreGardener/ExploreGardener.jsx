@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import GreenContext from "../../Context/GreenContext";
 
 const ExploreGardener = () => {
   const [gardeners, setGardeners] = useState([]);
-
 
   useEffect(() => {
     fetch("https://green-connect-server.onrender.com/gardener")

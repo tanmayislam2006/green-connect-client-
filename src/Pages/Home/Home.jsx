@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import Loader from "../../Components/Loader/Loader";
 import About from "../../Components/About/About";
 import Community from "../../Components/Community/Community";
@@ -7,18 +7,14 @@ import Trending from "../../Components/Trending/Trending";
 import FeaturesGardener from "../../Components/FeaturesGardener/FeaturesGardener";
 import Slider from "../../Components/Slider/Slider";
 import Hero from "../../Components/Hero/Hero";
-import GreenContext from "../../Context/GreenContext";
 
 const Home = () => {
-  const {user}=use(GreenContext)
-  console.log(user);
-
   return (
     <div>
       <Hero />
       <Slider />
       {/* features gardener */}
-      <FeaturesGardener/>
+      <FeaturesGardener />
       {/* Top Tips */}
       <Trending />
       {/* About Section */}
