@@ -17,7 +17,7 @@ const Register = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
-       const user=result.user
+        const user = result.user;
         const userProfile = {
           email: user?.email,
           fullName: user?.displayName,
@@ -49,7 +49,7 @@ const Register = () => {
           icon: "error",
           title: "Failed...",
           text: error.message,
-        })
+        });
       });
   };
 

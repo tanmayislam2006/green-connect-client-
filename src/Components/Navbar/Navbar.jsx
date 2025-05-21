@@ -6,7 +6,8 @@ import GreenContext from "../../Context/GreenContext";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { logoutUser, user } = use(GreenContext);
+  const { logoutUser, user ,firebaseUser} = use(GreenContext);
+  console.log(user,firebaseUser);
   const handleLogOut = () => {
     logoutUser()
       .then((res) => {
@@ -49,7 +50,7 @@ const Navbar = () => {
           Browse Tips
         </NavLink>
       </li>
-      {user && (
+      {firebaseUser && (
         <>
           <li>
             {" "}
@@ -122,7 +123,7 @@ const Navbar = () => {
         <ul className="hidden md:flex gap-6">{links}</ul>
       </div>
       <ThemeToggle />
-      {user ? (
+      {firebaseUser ? (
         <div className="dropdown dropdown-end mr-5">
           <div
             tabIndex={0}
@@ -141,7 +142,7 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-64 p-2 shadow space-y-4"
           >
             {dropdownLinks}
-            {user && (
+            {firebaseUser && (
               <li>
                 <button onClick={handleLogOut} className="btn">
                   Log Out
