@@ -4,78 +4,12 @@ const FeaturesGardener = () => {
   const [gardeners, setGardeners] = useState([]);
 
   useEffect(() => {
-    fetch("/api/gardeners") 
+    fetch("https://green-connect-server.onrender.com/gardener") 
       .then(res => res.json())
       .then(data => {
         const active = data.filter(g => g.status === "Active").slice(0, 6);
         setGardeners(active);
       })
-      .catch(() => {
-
-        const demo = [
-          {
-            id: 1,
-            name: "Tanmay Islam",
-            age: 28,
-            gender: "Male",
-            status: "Active",
-            experiences: "5 years in urban gardening, composting, and vertical farming.",
-            image: "https://randomuser.me/api/portraits/men/32.jpg",
-            totalTips: 12,
-          },
-          {
-            id: 2,
-            name: "Sara Ahmed",
-            age: 34,
-            gender: "Female",
-            status: "Active",
-            experiences: "Expert in hydroponics and organic vegetables.",
-            image: "https://randomuser.me/api/portraits/women/44.jpg",
-            totalTips: 18,
-          },
-          {
-            id: 3,
-            name: "Rafiq Hasan",
-            age: 41,
-            gender: "Male",
-            status: "Active",
-            experiences: "Community garden leader, pest control specialist.",
-            image: "https://randomuser.me/api/portraits/men/65.jpg",
-            totalTips: 7,
-          },
-          {
-            id: 4,
-            name: "Maya Chowdhury",
-            age: 30,
-            gender: "Female",
-            status: "Active",
-            experiences: "Balcony gardening and flower arrangement.",
-            image: "https://randomuser.me/api/portraits/women/68.jpg",
-            totalTips: 15,
-          },
-          {
-            id: 5,
-            name: "Jamal Uddin",
-            age: 36,
-            gender: "Male",
-            status: "Active",
-            experiences: "Organic farming and rooftop gardening.",
-            image: "https://randomuser.me/api/portraits/men/77.jpg",
-            totalTips: 10,
-          },
-          {
-            id: 6,
-            name: "Nadia Rahman",
-            age: 29,
-            gender: "Female",
-            status: "Active",
-            experiences: "Herb gardening and composting.",
-            image: "https://randomuser.me/api/portraits/women/55.jpg",
-            totalTips: 9,
-          },
-        ];
-        setGardeners(demo);
-      });
   }, []);
 
   return (
