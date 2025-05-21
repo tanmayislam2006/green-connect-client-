@@ -1,16 +1,16 @@
-import React, { use } from "react";
+import React, { useContext } from "react";
 import Loader from "../Components/Loader/Loader";
 import { Navigate, useLocation } from "react-router";
 import GreenContext from "../Context/GreenContext";
 
 const PrivateRouter = ({ children }) => {
   const location = useLocation();
-  const { user, loading } = use(GreenContext);
+  const { firebaseUser, loading } = useContext(GreenContext);
   if (loading) {
     return <Loader />;
   }
-  if (!user) {
-    return <Navigate to="/login" state={location.pathname} />;
+  if (!firebaseUser) {
+    return <Navigate state={location.pathname}  to="/login" />;
   }
 
   return children;

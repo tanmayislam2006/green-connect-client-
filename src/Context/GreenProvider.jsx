@@ -28,27 +28,30 @@ const GreenProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-    const logoutUser=()=>{
-      return signOut(auth)
+  const logoutUser = () => {
+    return signOut(auth);
+  };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setFirebaseUser(currentUser);
+      setLoading(false);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  useEffect(() => {
+    if (firebaseUser?.uid) {
+      fetch(`http://localhost:5000/user/${firebaseUser.uid}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setUser(data);
+          setLoading(false)
+        });
+    } else {
+      setUser(null);
     }
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        setFirebaseUser(currentUser);
-        setLoading(false);
-      });
-      return () => {
-        unsubscribe();
-      };
-    }, []);
-    useEffect(() => {
-      if (firebaseUser?.uid) {
-        fetch(`http://localhost:5000/user/${firebaseUser.uid}`)
-          .then((res) => res.json())
-          .then((data) => setUser(data));
-      } else {
-        setUser(null); 
-      }
-    }, [firebaseUser]);
+  }, [firebaseUser]);
   const sharedData = {
     firebaseUser,
     loading,
@@ -61,7 +64,6 @@ const GreenProvider = ({ children }) => {
     createAccount,
     logoutUser,
     user,
-
   };
   return <GreenContext value={sharedData}>{children}</GreenContext>;
 };

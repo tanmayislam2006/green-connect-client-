@@ -1,106 +1,62 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import Image1 from "../../assets/slider-1.jpg"
-import Image2 from "../../assets/slider-2.jpg"
-import Image3 from "../../assets/slider-3.jpeg"
+import React from "react";
+import { Typewriter } from "react-simple-typewriter";
 
 const Hero = () => {
   return (
-    <div className="w-full max-w-6xl mx-auto mt-8">
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        loop={true}
-        autoplay={{
-          delay: 3500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {/* Slide 1 */}
-        <SwiperSlide>
-          <div
-            className="relative h-80 md:h-[420px] flex items-center justify-center rounded-2xl overflow-hidden shadow-lg"
-            style={{
-              backgroundImage: `url(${Image2})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}
-          >
-            <div className="absolute  inset-0 "></div>
-            <div className="relative z-10 text-center px-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
-                Green Connect Gardening Festival 2025
-              </h2>
-              <p className="text-white text-lg mb-6">
-                Join us for a weekend of workshops, plant swaps, and expert talks!
-              </p>
-              <button className="bg-primary text-white px-6 py-2 rounded-full font-semibold shadow cursor-pointer">
-                Learn More
-              </button>
+    <section
+      className="w-full mb-16 py-16 md:py-24 flex items-center justify-center"
+      data-aos="fade-down"
+      data-aos-duration="1200"
+    >
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div className="flex-1 text-center md:text-left ">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-primary mb-6 leading-tight drop-shadow-lg">
+            <Typewriter
+              
+              delaySpeed={1000}
+              deleteSpeed={40}
+              loop={0}
+              typeSpeed={150}
+              words={[
+                "Grow,Share...",
+                "Plant Today...",
+                "Inspire Next...",
+              ]}
+            />
+          </h1>
+          <p className="text-lg md:text-2xl  mb-8 max-w-xl mx-auto md:mx-0">
+            Welcome to{" "}
+            <span className="font-semibold text-primary">Green Connect</span> —
+            your community for sustainable gardening tips, inspiration, and
+            local connections. Join us to make your garden and our planet
+            greener!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <button className="bg-primary text-white px-8 py-3 rounded-full font-semibold text-lg shadow transition">
+              Explore Trending Tips
+            </button>
+            <button className="border-2 border-primary text-primary px-8 py-3 rounded-full font-semibold text-lg shadow transition">
+              Join Community
+            </button>
+          </div>
+        </div>
+        <div className="flex-1 flex justify-center">
+          <div className="relative w-80 h-80 md:w-96 md:h-96">
+            <img
+              src="https://i.ibb.co/1JGqBqLH/16890.jpg"
+              alt="Hero Gardening"
+              className="rounded-3xl shadow-2xl w-full h-full object-cover border-4 border-primary"
+            />
+            <div className="absolute -top-6 -left-6 bg-white dark:bg-gray-900 rounded-full px-5 py-2 shadow-lg text-green-700  font-bold text-lg">
+              🌱 #EcoFriendly
+            </div>
+            <div className="absolute -bottom-6 -right-6 bg-primary text-white rounded-full px-5 py-2 shadow-lg font-bold text-lg">
+              👩‍🌾 10K+ Gardeners
             </div>
           </div>
-        </SwiperSlide>
-        {/* Slide 2 */}
-        <SwiperSlide>
-          <div
-            className="relative h-80 md:h-[420px] flex items-center justify-center rounded-2xl overflow-hidden shadow-lg"
-            style={{
-              backgroundImage: `url(${Image1})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}
-          >
-            <div className="absolute inset-0 "></div>
-            <div className="relative z-10 text-center px-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
-                Urban Gardening Workshop
-              </h2>
-              <p className="text-white text-lg mb-6">
-                Discover how to grow your own food in small spaces. Free starter kits for attendees!
-              </p>
-              <button className="bg-primary text-white px-6 py-2 rounded-full font-semibold shadow cursor-pointer">
-                Register Now
-              </button>
-            </div>
-          </div>
-        </SwiperSlide>
-        {/* Slide 3 */}
-        <SwiperSlide>
-          <div
-            className="relative h-80 md:h-[420px] flex items-center justify-center rounded-2xl overflow-hidden shadow-lg"
-            style={{
-              backgroundImage: `url(${Image3})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            <div className="absolute  inset-0 "></div>
-            <div className="relative z-10 text-center px-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
-                Composting for Beginners
-              </h2>
-              <p className="text-white text-lg mb-6">
-                Learn the basics of composting and get your free compost bin!
-              </p>
-              <button className="bg-primary text-white px-6 py-2 rounded-full font-semibold shadow cursor-pointer">
-                Join Event
-              </button>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
