@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router";
 import { FaRegThumbsUp } from "react-icons/fa";
 
 const DetailsTip = () => {
   const [tip] = useLoaderData();
-
+  const [like, setLike] = useState(tip?.totalLike);
+  const handleLike = () => {
+    setLike((like) => like + 1);
+    fetch(`https://green-connect-server.onrender.com/tiplike/${tip?._id}`, {
+      method: "PATCH",
+    })
+  };
   if (!tip) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -29,7 +35,7 @@ const DetailsTip = () => {
             className="absolute top-4 right-4 bg-primary text-white px-5 py-2 rounded-full font-semibold shadow text-lg"
             style={{ zIndex: 2 }}
           >
-            {tip.totalLike || 0} Like
+            {like || 0} Like
           </button>
           <div className="flex items-center gap-4 mt-2">
             <img
@@ -46,7 +52,9 @@ const DetailsTip = () => {
         {/* Right: Details */}
         <div className="flex-1 flex flex-col justify-between">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">{tip.title}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              {tip.title}
+            </h1>
             <div className="flex flex-wrap gap-3 mb-6">
               <span className="inline-block bg-green-100 text-green-700 text-sm font-semibold px-4 py-2 rounded-full">
                 {tip.category}
@@ -54,7 +62,13 @@ const DetailsTip = () => {
               <span className="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full">
                 {tip.difficulty} Difficulty
               </span>
-              <span className={`inline-block ${tip.availability === "Public" ? "bg-yellow-100 text-yellow-700" : "bg-gray-200 text-gray-600"} text-sm font-semibold px-4 py-2 rounded-full`}>
+              <span
+                className={`inline-block ${
+                  tip.availability === "Public"
+                    ? "bg-yellow-100 text-yellow-700"
+                    : "bg-gray-200 text-gray-600"
+                } text-sm font-semibold px-4 py-2 rounded-full`}
+              >
                 {tip.availability}
               </span>
               <span className="inline-block bg-gray-100 text-gray-700 text-sm font-semibold px-4 py-2 rounded-full">
@@ -66,6 +80,7 @@ const DetailsTip = () => {
             </p>
             {/* Like Button */}
             <button
+              onClick={handleLike}
               type="button"
               className="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full font-semibold shadow cursor-pointer text-lg relative"
             >
@@ -78,7 +93,9 @@ const DetailsTip = () => {
             <span className="text-sm text-gray-500">
               Posted:{" "}
               <span className="font-medium">
-                {tip.date && tip.time ? `${tip.date} at ${tip.time}` : "Just now"}
+                {tip.date && tip.time
+                  ? `${tip.date} at ${tip.time}`
+                  : "Just now"}
               </span>
             </span>
             <span className="ml-0 md:ml-6 text-sm text-gray-400">

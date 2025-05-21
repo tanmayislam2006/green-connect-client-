@@ -2,10 +2,11 @@ import Aos from "aos";
 import React, { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import { FaRegThumbsUp } from "react-icons/fa";
+import { useNavigate } from "react-router";
 
 const Trending = () => {
   const [trendingTips, setTrendingTips] = useState([]);
-  console.log(trendingTips);
+ const navigate=useNavigate()
   useEffect(() => {
     fetch("https://green-connect-server.onrender.com/trending")
       .then((res) => res.json())
@@ -73,7 +74,9 @@ const Trending = () => {
                       {tip.userName}
                     </span>
                   </div>
-                  <button className="bg-primary mb-4 cursor-pointer text-white px-6 py-2 rounded-xl font-semibold shadow">
+                  <button 
+                  onClick={()=>navigate(`/detailtip/${tip?._id}`)}
+                  className="bg-primary mb-4 cursor-pointer text-white px-6 py-2 rounded-xl font-semibold shadow">
                     View Details
                   </button>
                 </div>
