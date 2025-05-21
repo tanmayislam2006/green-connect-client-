@@ -1,11 +1,13 @@
 import Aos from "aos";
 import React, { useEffect, useState } from "react";
 import "aos/dist/aos.css";
+import { FaRegThumbsUp } from "react-icons/fa";
 
 const Trending = () => {
   const [trendingTips, setTrendingTips] = useState([]);
+  console.log(trendingTips);
   useEffect(() => {
-    fetch("https://green-connect-server.onrender.com/browsetips")
+    fetch("https://green-connect-server.onrender.com/trending")
       .then((res) => res.json())
       .then((data) => setTrendingTips(data));
   }, []);
@@ -42,6 +44,14 @@ const Trending = () => {
                 <span className="absolute top-4 right-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
                   {tip.category}
                 </span>
+                {/* Like */}
+                <button
+                  className="absolute bottom-4 left-4 rounded-full flex items-center gap-1 px-3 py-1 shadow bg-primary text-white  text-lg font-bold"
+                  title="Like"
+                  type="button"
+                > <FaRegThumbsUp className="text-xl" />
+                   <span className="ml-1 text-base">{tip.totalLike || 0}</span>
+                </button>
               </div>
               <div className="flex flex-col flex-1 items-center ">
                 <h3 className="text-2xl font-bold text-primary mb-2 text-center">

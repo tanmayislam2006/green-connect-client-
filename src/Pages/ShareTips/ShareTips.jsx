@@ -15,6 +15,8 @@ const categories = [
 
 const ShareTips = () => {
   const { user } = useContext(GreenContext);
+  const date = new Date().toLocaleDateString()
+  const time =new Date().toLocaleTimeString()
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -24,6 +26,9 @@ const ShareTips = () => {
       ...data,
       uid: user?.uid,
       photoURL: user?.photoURL,
+      totalLike:0,
+      date,
+      time
     };
     fetch("https://green-connect-server.onrender.com/sharetips", {
       method: "POST",

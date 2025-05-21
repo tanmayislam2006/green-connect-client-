@@ -17,12 +17,20 @@ const DetailsTip = () => {
     <div className="min-h-screen  flex items-center justify-center py-10 px-2">
       <div className="w-full max-w-6xl  rounded-2xl shadow-2xl p-6 md:p-14 flex flex-col md:flex-row gap-10">
         {/* Left: Image */}
-        <div className="flex-shrink-0 flex flex-col items-center md:items-start w-full md:w-1/2">
+        <div className="flex-shrink-0 flex flex-col items-center md:items-start w-full md:w-1/2 relative">
           <img
             src={tip.imageUrl}
             alt={tip.title}
             className="w-full h-72 md:h-[420px] object-cover rounded-xl shadow mb-6"
           />
+          {/* Like count*/}
+          <button
+            type="button"
+            className="absolute top-4 right-4 bg-primary text-white px-5 py-2 rounded-full font-semibold shadow text-lg"
+            style={{ zIndex: 2 }}
+          >
+            {tip.totalLike || 0} Like
+          </button>
           <div className="flex items-center gap-4 mt-2">
             <img
               src={tip.photoURL}
@@ -59,7 +67,7 @@ const DetailsTip = () => {
             {/* Like Button */}
             <button
               type="button"
-              className="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full font-semibold shadow cursor-pointer text-lg"
+              className="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full font-semibold shadow cursor-pointer text-lg relative"
             >
               <FaRegThumbsUp className="text-xl" />
               Like
@@ -68,7 +76,10 @@ const DetailsTip = () => {
           {/* tip time  */}
           <div className="mt-8 flex flex-col md:flex-row md:items-center gap-2">
             <span className="text-sm text-gray-500">
-              Posted: <span className="font-medium">Just now</span>
+              Posted:{" "}
+              <span className="font-medium">
+                {tip.date && tip.time ? `${tip.date} at ${tip.time}` : "Just now"}
+              </span>
             </span>
             <span className="ml-0 md:ml-6 text-sm text-gray-400">
               Tip ID: {tip._id}
