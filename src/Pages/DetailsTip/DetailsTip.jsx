@@ -14,8 +14,8 @@ const DetailsTip = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-200 flex items-center justify-center py-10 px-2">
-      <div className="w-full max-w-5xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-14 flex flex-col md:flex-row gap-10">
+    <div className="min-h-screen  flex items-center justify-center py-10 px-2">
+      <div className="w-full max-w-6xl  rounded-2xl shadow-2xl p-6 md:p-14 flex flex-col md:flex-row gap-10">
         {/* Left: Image */}
         <div className="flex-shrink-0 flex flex-col items-center md:items-start w-full md:w-1/2">
           <img
@@ -30,8 +30,8 @@ const DetailsTip = () => {
               className="w-12 h-12 object-cover rounded-full border-2 border-primary"
             />
             <div>
-              <div className="font-semibold text-gray-800 dark:text-white text-lg">{tip.userName}</div>
-              <div className="text-xs text-gray-500">{tip.userEmail}</div>
+              <div className="text-lg">{tip.userName}</div>
+              <div className="text-xs ">{tip.userEmail}</div>
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@ const DetailsTip = () => {
                 {tip.plantType}
               </span>
             </div>
-            <p className="text-gray-700 dark:text-gray-200 mb-8 whitespace-pre-line text-lg leading-relaxed">
+            <p className=" mb-8 whitespace-pre-line text-lg">
               {tip.description}
             </p>
             {/* Like Button */}
