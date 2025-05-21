@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 
+const getInitialTheme = () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) return savedTheme;
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return prefersDark ? "dark" : "light";
+};
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const handleToggle = (e) => {
@@ -32,22 +39,30 @@ const ThemeToggle = () => {
         >
           {theme === "dark" ? (
             // Moon icon
-            <svg className="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+            <svg
+              className="w-4 h-4 text-yellow-300"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
               <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
             </svg>
           ) : (
             // Sun icon
-            <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <svg
+              className="w-4 h-4 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
               <circle cx="10" cy="10" r="4" />
               <g>
-                <line x1="10" y1="2" x2="10" y2="4" stroke="currentColor" strokeWidth="2"/>
-                <line x1="10" y1="16" x2="10" y2="18" stroke="currentColor" strokeWidth="2"/>
-                <line x1="4" y1="10" x2="2" y2="10" stroke="currentColor" strokeWidth="2"/>
-                <line x1="18" y1="10" x2="16" y2="10" stroke="currentColor" strokeWidth="2"/>
-                <line x1="5.64" y1="5.64" x2="4.22" y2="4.22" stroke="currentColor" strokeWidth="2"/>
-                <line x1="14.36" y1="14.36" x2="15.78" y2="15.78" stroke="currentColor" strokeWidth="2"/>
-                <line x1="5.64" y1="14.36" x2="4.22" y2="15.78" stroke="currentColor" strokeWidth="2"/>
-                <line x1="14.36" y1="5.64" x2="15.78" y2="4.22" stroke="currentColor" strokeWidth="2"/>
+                <line x1="10" y1="2" x2="10" y2="4" stroke="currentColor" strokeWidth="2" />
+                <line x1="10" y1="16" x2="10" y2="18" stroke="currentColor" strokeWidth="2" />
+                <line x1="4" y1="10" x2="2" y2="10" stroke="currentColor" strokeWidth="2" />
+                <line x1="18" y1="10" x2="16" y2="10" stroke="currentColor" strokeWidth="2" />
+                <line x1="5.64" y1="5.64" x2="4.22" y2="4.22" stroke="currentColor" strokeWidth="2" />
+                <line x1="14.36" y1="14.36" x2="15.78" y2="15.78" stroke="currentColor" strokeWidth="2" />
+                <line x1="5.64" y1="14.36" x2="4.22" y2="15.78" stroke="currentColor" strokeWidth="2" />
+                <line x1="14.36" y1="5.64" x2="15.78" y2="4.22" stroke="currentColor" strokeWidth="2" />
               </g>
             </svg>
           )}
