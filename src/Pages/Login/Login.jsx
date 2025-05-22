@@ -1,10 +1,11 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import Logo from "../../assets/green-connect.png";
 import GreenContext from "../../Context/GreenContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const {
@@ -17,6 +18,7 @@ const Login = () => {
   } = use(GreenContext);
   const location = useLocation();
   const navigate = useNavigate();
+    const [showPass, setShowPass] = useState(false);
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
@@ -51,7 +53,7 @@ const Login = () => {
                   }
                 });
             }
-          })
+          });
         if (user) {
           // update log in information   in db
           fetch("https://green-connect-server.onrender.com/login", {
@@ -128,7 +130,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen  flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white  rounded-lg shadow-md overflow-hidden">
+      <div className="w-full border border-gray-200 max-w-md  rounded-lg shadow-md overflow-hidden">
         <div className="bg-accent p-6 text-center">
           <img
             src={Logo}
@@ -142,7 +144,7 @@ const Login = () => {
         <div className="p-6">
           <button
             onClick={handleGoogleLogin}
-            className="w-full cursor-pointer flex items-center justify-center gap-2 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors mb-4"
+            className="w-full cursor-pointer flex items-center justify-center gap-2 py-2 px-4 border border-gray-300 rounded-md   transition-colors mb-4"
           >
             <FcGoogle className="text-2xl" />
             <span>Continue with Google</span>
@@ -155,41 +157,59 @@ const Login = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
+            {/* email Field */}
             <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-gray-700 mb-2 font-bold"
-              >
-                Email <span className="text-red-400">*</span>
+              <label htmlFor="email" className="block  font-medium mb-2">
+                Email <span className="text-red-700">*</span>
               </label>
               <input
                 type="email"
                 id="email"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                placeholder=""
+                name="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none"
                 required
               />
             </div>
-
-            <div className="mb-6">
-              <label
-                htmlFor="password"
-                className="block text-gray-700 mb-2 font-bold"
-              >
+            {/* Password Field  */}
+            {/* <div className="mb-6">
+              <label htmlFor="password" className="block  mb-2 font-bold">
                 Password <span className="text-red-400">*</span>
               </label>
               <input
                 type="password"
                 id="password"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4CAF50]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
                 placeholder=""
                 required
               />
+            </div> */}
+            <div className="mb-4 relative ">
+              <p
+                onClick={() => setShowPass(!showPass)}
+                className="absolute right-8 bottom-3 cursor-pointer"
+              >
+                {showPass ? (
+                  <FaRegEyeSlash size={20} />
+                ) : (
+                  <FaRegEye size={20} />
+                )}
+              </p>
+              <label htmlFor="password" className="block  font-medium mb-2">
+                Password <span className="text-red-700">*</span>
+              </label>
+              <input
+                type={showPass ? "text" : "password"}
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none"
+                required
+              />
             </div>
-
             <button
               type="submit"
-              className="w-full bg-primary cursor-pointer text-white py-2 px-4 rounded-md hover:bg-[#3e8e41] transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+              className="w-full bg-primary cursor-pointer text-white py-2 px-4 rounded-md hover:bg-[#3e8e41] transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-50"
             >
               Log In
             </button>
@@ -199,7 +219,7 @@ const Login = () => {
             <a href="#" className="text-primary hover:underline">
               Forgot password?
             </a>
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2">
               Don't have an account?{" "}
               <Link
                 state={location.state}

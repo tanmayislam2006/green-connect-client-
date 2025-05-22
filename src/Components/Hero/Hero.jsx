@@ -12,6 +12,8 @@ const Hero = () => {
         <div className="flex-1 text-center md:text-left ">
           <h1 className="text-4xl md:text-6xl font-extrabold text-primary mb-6 leading-tight drop-shadow-lg">
             <Typewriter
+              cursor
+              cursorStyle={<span style={{ color: "transparent" }}>|</span>}
               delaySpeed={1000}
               deleteSpeed={40}
               loop={0}

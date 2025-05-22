@@ -4,6 +4,7 @@ import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import GreenContext from "../../Context/GreenContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   const {
@@ -123,8 +124,8 @@ const Register = () => {
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-no-repeat bg-cover bg-center">
-        <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full my-10  dark:bg-gray-800">
-          <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+        <div className="border border-gray-200 shadow-lg rounded-lg p-8 max-w-md w-full my-10">
+          <h2 className="text-2xl font-bold text-center mb-6">
             Create an Account
           </h2>
           <form onSubmit={handleRegister}>
@@ -132,7 +133,7 @@ const Register = () => {
             <div className="mb-4 ">
               <label
                 htmlFor="fullName"
-                className="block text-gray-700 dark:text-gray-200 font-medium mb-2"
+                className="block  font-medium mb-2"
               >
                 Full Name <span className="text-red-700">*</span>
               </label>
@@ -141,7 +142,7 @@ const Register = () => {
                 id="fullName"
                 name="fullName"
                 placeholder="Enter your full name"
-                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none text-gray-900 dark:text-white bg-white dark:bg-gray-800"
+                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none"
                 required
               />
             </div>
@@ -150,7 +151,7 @@ const Register = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-gray-700 dark:text-gray-200 font-medium mb-2"
+                className="block  font-medium mb-2"
               >
                 Email <span className="text-red-700">*</span>
               </label>
@@ -159,7 +160,7 @@ const Register = () => {
                 id="email"
                 name="email"
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none text-gray-900 dark:text-white bg-white dark:bg-gray-800"
+                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none"
                 required
               />
             </div>
@@ -168,7 +169,7 @@ const Register = () => {
             <div className="mb-4">
               <label
                 htmlFor="photoURL"
-                className="block text-gray-700 dark:text-gray-200 font-medium mb-2"
+                className="block  font-medium mb-2"
               >
                 Photo URL
               </label>
@@ -177,7 +178,7 @@ const Register = () => {
                 id="photoURL"
                 name="photoURL"
                 placeholder="Enter your photo URL (optional)"
-                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none text-gray-900 dark:text-white bg-white dark:bg-gray-800"
+                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none"
               />
             </div>
 
@@ -195,17 +196,16 @@ const Register = () => {
               </p>
               <label
                 htmlFor="password"
-                className="block text-gray-700 dark:text-gray-200 font-medium mb-2"
+                className="block  font-medium mb-2"
               >
                 Password <span className="text-red-700">*</span>
               </label>
               <input
-                value={"123456Aa@"}
                 type={showPass ? "text" : "password"}
                 id="password"
                 name="password"
                 placeholder="Enter your password"
-                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none text-gray-900 dark:text-white bg-white dark:bg-gray-800"
+                className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none"
                 onChange={handlePasswordChange}
                 required
               />
@@ -241,40 +241,12 @@ const Register = () => {
           {/* Google Login */}
           <button
             onClick={handleGoogleLogin}
-            type="submit"
-            className="flex items-center cursor-pointer gap-3 justify-center border border-gray-300 rounded-lg py-2 px-4 bg-white text-black w-full"
+            className="w-full cursor-pointer flex items-center justify-center gap-2 py-2 px-4 border border-gray-300 rounded-md   transition-colors mb-4"
           >
-            <svg
-              aria-label="Google logo"
-              width="20"
-              height="20"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-            >
-              <g>
-                <path d="m0 0H512V512H0" fill="#fff"></path>
-                <path
-                  fill="#34a853"
-                  d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                ></path>
-                <path
-                  fill="#4285f4"
-                  d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                ></path>
-                <path
-                  fill="#fbbc02"
-                  d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                ></path>
-                <path
-                  fill="#ea4335"
-                  d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                ></path>
-              </g>
-            </svg>
-            Login with Google
+            <FcGoogle className="text-2xl" />
+            <span>Continue with Google</span>
           </button>
-
-          <p className="text-center text-gray-600 mt-6">
+          <p className="text-center mt-6">
             Already have an account?{" "}
             <Link to="/login" className="text-primary font-medium">
               Login

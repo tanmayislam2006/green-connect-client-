@@ -2,7 +2,7 @@
 
 Green Connect is a modern community platform for discovering, sharing, and learning about sustainable gardening. Connect with local gardeners, browse expert tips, and contribute your own knowledge to help make our planet greener!
 
-[![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-19.x-61DAFB?logo=react)](https://reactjs.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.x-38B2AC?logo=tailwindcss)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-4.x-646CFF?logo=vite)](https://vitejs.dev/)
 [![Firebase](https://img.shields.io/badge/Firebase-9.x-FFCA28?logo=firebase)](https://firebase.google.com/)
