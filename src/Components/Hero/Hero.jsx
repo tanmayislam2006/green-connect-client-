@@ -4,7 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 const Hero = () => {
   return (
     <section
-      className="w-full mb-16 py-16 md:py-24 flex items-center justify-center"
+      className="w-full  mb-16 py-16 md:py-24 flex items-center justify-center"
       data-aos="fade-down"
       data-aos-duration="1200"
     >
@@ -12,16 +12,11 @@ const Hero = () => {
         <div className="flex-1 text-center md:text-left ">
           <h1 className="text-4xl md:text-6xl font-extrabold text-primary mb-6 leading-tight drop-shadow-lg">
             <Typewriter
-              
               delaySpeed={1000}
               deleteSpeed={40}
               loop={0}
               typeSpeed={150}
-              words={[
-                "Grow,Share...",
-                "Plant Today...",
-                "Inspire Next...",
-              ]}
+              words={["Grow,Share...", "Plant Today...", "Inspire Next..."]}
             />
           </h1>
           <p className="text-lg md:text-2xl  mb-8 max-w-xl mx-auto md:mx-0">

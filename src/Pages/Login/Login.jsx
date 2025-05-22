@@ -7,14 +7,51 @@ import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router";
 
 const Login = () => {
-  const { googleLogin, errorMessage, setErrorMessage, loginUser } =
-    use(GreenContext);
+  const {
+    googleLogin,
+    errorMessage,
+    setErrorMessage,
+    loginUser,
+    refresh,
+    setRefresh,
+  } = use(GreenContext);
   const location = useLocation();
   const navigate = useNavigate();
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
+        // check user from database
+        fetch(`https://green-connect-server.onrender.com/user/${user?.uid}`)
+          .then((res) => res.json())
+          .then((data) => {
+            const availableUser = data?.user;
+            // if user is not available
+            if (!availableUser) {
+              const userProfile = {
+                email: user?.email,
+                fullName: user?.displayName,
+                photoURL: user?.photoURL,
+                creationTime: user?.metadata?.creationTime,
+                lastSignInTime: user?.metadata?.lastSignInTime,
+                uid: user?.uid,
+              };
+              fetch("https://green-connect-server.onrender.com/register", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userProfile),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  if (data.insertedId) {
+                    setRefresh(!refresh);
+                    setErrorMessage("");
+                  }
+                });
+            }
+          })
         if (user) {
           // update log in information   in db
           fetch("https://green-connect-server.onrender.com/login", {
@@ -28,8 +65,13 @@ const Login = () => {
             }),
           })
             .then((res) => res.json())
-            .then((data) => {});
+            .then((data) => {
+              if (data.modifiedCount) {
+                setRefresh(!refresh);
+              }
+            });
         }
+
         navigate(location?.state || "/");
 
         toast.success("Login successful!");
@@ -160,6 +202,7 @@ const Login = () => {
             <p className="mt-2 text-gray-600">
               Don't have an account?{" "}
               <Link
+                state={location.state}
                 to="/register"
                 className="text-primary font-medium hover:underline"
               >

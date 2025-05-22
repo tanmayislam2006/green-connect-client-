@@ -6,8 +6,14 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { errorMessage, setErrorMessage, googleLogin, createAccount } =
-    use(GreenContext);
+  const {
+    errorMessage,
+    setErrorMessage,
+    googleLogin,
+    createAccount,
+    refresh,
+    setRefresh,
+  } = use(GreenContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -36,6 +42,7 @@ const Register = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.insertedId) {
+              setRefresh(!refresh);
               setErrorMessage("");
             }
           });
@@ -75,7 +82,10 @@ const Register = () => {
     const form = e.target;
     const formData = new FormData(form);
     const { email, password, ...data } = Object.fromEntries(formData.entries());
-
+    if (passwordError) {
+      toast.error("Invalid Password", passwordError, "error");
+      return;
+    }
     createAccount(email, password)
       .then((result) => {
         // save user in db
@@ -98,6 +108,7 @@ const Register = () => {
             if (data.insertedId) {
               setErrorMessage("");
               toast.success("Registration Successful");
+              setRefresh(!refresh);
               navigate(location?.state || "/");
             }
           });
@@ -107,11 +118,6 @@ const Register = () => {
         toast.error("Registration Failed");
       });
     setErrorMessage("");
-
-    if (passwordError) {
-      toast("Invalid Password", passwordError, "error");
-      return;
-    }
   };
 
   return (

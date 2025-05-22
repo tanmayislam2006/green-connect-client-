@@ -15,6 +15,7 @@ const GreenProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const [refresh,setRefresh]=useState(false)
   const createAccount = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -52,7 +53,7 @@ const GreenProvider = ({ children }) => {
     } else {
       setUser(null);
     }
-  }, [firebaseUser]);
+  }, [firebaseUser,refresh]);
   const sharedData = {
     firebaseUser,
     loading,
@@ -65,6 +66,8 @@ const GreenProvider = ({ children }) => {
     createAccount,
     logoutUser,
     user,
+    refresh,
+    setRefresh
   };
   return <GreenContext value={sharedData}>{children}</GreenContext>;
 };
