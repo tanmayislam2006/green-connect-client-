@@ -3,17 +3,21 @@ import React, { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import { FaRegThumbsUp } from "react-icons/fa";
 import { useNavigate } from "react-router";
+import { Tooltip } from "react-tooltip";
 
 const Trending = () => {
   const [trendingTips, setTrendingTips] = useState([]);
- const navigate=useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("https://green-connect-server.onrender.com/trending")
       .then((res) => res.json())
       .then((data) => setTrendingTips(data));
   }, []);
   return (
-    <section className="w-full max-w-6xl mx-auto my-12 px-4 py-10">
+    <section
+      id="trending"
+      className="w-full max-w-6xl mx-auto my-12 px-4 py-10"
+    >
       <h2
         className="text-2xl md:text-3xl font-bold text-primary mb-8 text-center"
         data-aos="fade-up"
@@ -29,9 +33,9 @@ const Trending = () => {
           trendingTips.map((tip, idx) => (
             <div
               key={tip._id}
-                className="w-full flex flex-col items-center rounded-lg shadow border border-gray-200 "
-                data-aos="fade-up"
-                data-aos-delay={idx * 100}
+              className="w-full flex flex-col items-center rounded-lg shadow border border-gray-200 "
+              data-aos="fade-up"
+              data-aos-delay={idx * 100}
             >
               <div className="w-full relative">
                 <img
@@ -50,14 +54,24 @@ const Trending = () => {
                   className="absolute bottom-4 left-4 rounded-full flex items-center gap-1 px-3 py-1 shadow bg-primary text-white  text-lg font-bold"
                   title="Like"
                   type="button"
-                > <FaRegThumbsUp className="text-xl" />
-                   <span className="ml-1 text-base">{tip.totalLike || 0}</span>
+                >
+                  <FaRegThumbsUp className="text-xl" />
+                  <span className="ml-1 text-base">{tip.totalLike || 0}</span>
                 </button>
               </div>
               <div className="flex flex-col flex-1 items-center ">
-                <h3 className="text-2xl font-bold text-primary mb-2 text-center">
+                <h3
+                  className="text-2xl font-bold text-primary mb-2 text-center"
+                  data-tooltip-id={`tip-difficulty-${tip._id}`}
+                >
                   {tip.title}
                 </h3>
+                <Tooltip
+                  id={`tip-difficulty-${tip._id}`}
+                  place="bottom"
+                  variant="info"
+                  content={`Difficulty: ${tip.difficulty}`}
+                />
                 <p className="text-base mb-2 mx-4 line-clamp-3 min-h-[30px]">
                   {tip.description}
                 </p>
@@ -74,9 +88,10 @@ const Trending = () => {
                       {tip.userName}
                     </span>
                   </div>
-                  <button 
-                  onClick={()=>navigate(`/detailtip/${tip?._id}`)}
-                  className="bg-primary mb-4 cursor-pointer text-white px-6 py-2 rounded-xl font-semibold shadow">
+                  <button
+                    onClick={() => navigate(`/detailtip/${tip?._id}`)}
+                    className="bg-primary mb-4 cursor-pointer text-white px-6 py-2 rounded-xl font-semibold shadow"
+                  >
                     View Details
                   </button>
                 </div>

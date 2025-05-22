@@ -28,11 +28,11 @@ const Hero = () => {
             local connections. Join us to make your garden and our planet
             greener!
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button className="bg-primary text-white px-8 py-3 rounded-full font-semibold text-lg shadow transition">
+          <div className="w-2/3 mx-auto md:w-full flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <button className="bg-primary text-white px-4 py-2  md:px-8 md:py-3 rounded-full font-semibold text-lg shadow transition cursor-pointer">
               Explore Trending Tips
             </button>
-            <button className="border-2 border-primary text-primary px-8 py-3 rounded-full font-semibold text-lg shadow transition">
+            <button className="border-2 border-primary text-primary  px-4 py-2  md:px-8 md:py-3 rounded-full font-semibold text-lg shadow transition cursor-pointer">
               Join Community
             </button>
           </div>
