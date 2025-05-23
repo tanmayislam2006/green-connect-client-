@@ -9,7 +9,7 @@ const DetailsTip = () => {
     setLike((like) => like + 1);
     fetch(`https://green-connect-server.onrender.com/tiplike/${tip?._id}`, {
       method: "PATCH",
-    })
+    });
   };
   if (!tip) {
     return (
@@ -21,9 +21,9 @@ const DetailsTip = () => {
 
   return (
     <div className="min-h-screen  flex items-center justify-center py-10 px-2">
-      <div className="w-full max-w-6xl  rounded-2xl shadow-2xl p-6 md:p-14 flex flex-col md:flex-row gap-10">
+      <div className="w-full max-w-6xl  rounded-2xl shadow-2xl p-6 md:p-14 flex flex-col lg:flex-row gap-10">
         {/* Left: Image */}
-        <div className="flex-shrink-0 flex flex-col items-center md:items-start w-full md:w-1/2 relative">
+        <div className="flex-shrink-0 flex flex-col items-center md:items-start w-full md:2/3 mx-auto lg:w-1/2 relative">
           <img
             src={tip.imageUrl}
             alt={tip.title}
@@ -82,7 +82,7 @@ const DetailsTip = () => {
             <button
               onClick={handleLike}
               type="button"
-              className="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full font-semibold shadow cursor-pointer text-lg relative"
+              className="flex items-center gap-2  btn btn-primary rounded-full  shadow cursor-pointer text-lg relative"
             >
               <FaRegThumbsUp className="text-xl" />
               Like

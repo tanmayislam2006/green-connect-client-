@@ -12,6 +12,7 @@ import Loader from "../Components/Loader/Loader";
 import Update from "../Pages/Update/Update";
 import DetailsTip from "../Pages/DetailsTip/DetailsTip";
 import PrivateRouter from "./PrivateRouter";
+import MyProfile from "../Pages/MyProfile/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,14 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://green-connect-server.onrender.com/detailtip/${params.id}`),
         hydrateFallbackElement: <Loader />,
+      },
+      {
+        path: "/myprofile",
+        element: (
+          <PrivateRouter>
+            <MyProfile />
+          </PrivateRouter>
+        )
       },
     ],
   },

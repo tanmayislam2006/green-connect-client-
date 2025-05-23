@@ -8,7 +8,7 @@ const Hero = () => {
       data-aos="fade-down"
       data-aos-duration="1200"
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-col-reverse lg:flex-row items-center gap-12">
         <div className="flex-1 text-center md:text-left ">
           <h1 className="text-4xl md:text-6xl font-extrabold text-primary mb-6 leading-tight drop-shadow-lg">
             <Typewriter
