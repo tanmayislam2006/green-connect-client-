@@ -33,7 +33,7 @@ const Register = () => {
           lastSignInTime: user?.metadata?.lastSignInTime,
           uid: user?.uid,
         };
-        fetch("https://green-connect-server.onrender.com/register", {
+        fetch("https://green-connect-server.vercel.app/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const Register = () => {
           lastSignInTime: result.user?.metadata?.lastSignInTime,
           uid: result.user?.uid,
         };
-        fetch("https://green-connect-server.onrender.com/register", {
+        fetch("https://green-connect-server.vercel.app/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

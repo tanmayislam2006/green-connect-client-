@@ -11,7 +11,7 @@ const BrowseTips = () => {
 
   useEffect(() => {
     setLoading(true);
-    let getData = "https://green-connect-server.onrender.com/browsetips";
+    let getData = "https://green-connect-server.vercel.app/browsetips";
     if (difficulty !== "All") {
       getData += `?difficulty=${difficulty}`;
     }
@@ -24,7 +24,7 @@ const BrowseTips = () => {
   }, [difficulty]);
 
   return (
-    <div className="min-h-screen py-10 px-2 flex flex-col items-center">
+    <div className="min-h-screen py-10 px-4 flex flex-col items-center max-w-7xl mx-auto">
       <h1 className="text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
         Browse Community Gardening Tips
       </h1>
@@ -51,7 +51,7 @@ const BrowseTips = () => {
         </select>
       </div>
 
-      <div className="w-full hidden md:block     max-w-5xl border border-gray-200 rounded-lg overflow-x-auto">
+      <div className="w-full hidden md:block  border border-gray-200 rounded-lg overflow-x-auto">
         {loading ? (
           <div className="py-10 text-center">
             <Loader />
@@ -76,7 +76,7 @@ const BrowseTips = () => {
                 </tr>
               ) : (
                 tips.map((tip) => (
-                  <tr key={tip._id} className="border-b border-gray-200">
+                  <tr key={tip._id} className="border-b border-gray-200 hover:bg-primary/10">
                     {/* Image*/}
                     <td className="py-3 px-4">
                       {tip?.imageUrl ? (

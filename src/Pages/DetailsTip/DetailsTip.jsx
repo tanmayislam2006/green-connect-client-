@@ -7,7 +7,7 @@ const DetailsTip = () => {
   const [like, setLike] = useState(tip?.totalLike);
   const handleLike = () => {
     setLike((like) => like + 1);
-    fetch(`https://green-connect-server.onrender.com/tiplike/${tip?._id}`, {
+    fetch(`https://green-connect-server.vercel.app/tiplike/${tip?._id}`, {
       method: "PATCH",
     });
   };

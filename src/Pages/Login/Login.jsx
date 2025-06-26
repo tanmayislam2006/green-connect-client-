@@ -24,7 +24,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         // check user from database
-        fetch(`https://green-connect-server.onrender.com/user/${user?.uid}`)
+        fetch(`https://green-connect-server.vercel.app/user/${user?.uid}`)
           .then((res) => res.json())
           .then((data) => {
             const availableUser = data?.user;
@@ -38,7 +38,7 @@ const Login = () => {
                 lastSignInTime: user?.metadata?.lastSignInTime,
                 uid: user?.uid,
               };
-              fetch("https://green-connect-server.onrender.com/register", {
+              fetch("https://green-connect-server.vercel.app/register", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -56,7 +56,7 @@ const Login = () => {
           });
         if (user) {
           // update log in information   in db
-          fetch("https://green-connect-server.onrender.com/login", {
+          fetch("https://green-connect-server.vercel.app/login", {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -98,7 +98,7 @@ const Login = () => {
         const user = result.user;
         if (user) {
           // update information in db
-          fetch("https://green-connect-server.onrender.com/login", {
+          fetch("https://green-connect-server.vercel.app/login", {
             method: "PATCH",
             headers: {
               "content-type": "application/json",

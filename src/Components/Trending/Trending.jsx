@@ -9,7 +9,7 @@ const Trending = () => {
   const [trendingTips, setTrendingTips] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("https://green-connect-server.onrender.com/trending")
+    fetch("https://green-connect-server.vercel.app/trending")
       .then((res) => res.json())
       .then((data) => setTrendingTips(data));
   }, []);

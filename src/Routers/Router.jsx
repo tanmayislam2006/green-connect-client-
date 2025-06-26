@@ -13,6 +13,7 @@ import Update from "../Pages/Update/Update";
 import DetailsTip from "../Pages/DetailsTip/DetailsTip";
 import PrivateRouter from "./PrivateRouter";
 import MyProfile from "../Pages/MyProfile/MyProfile";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -36,23 +37,11 @@ const router = createBrowserRouter([
       {
         path: "/browseTips",
         element: <BrowseTips />,
-        loader: () => fetch("https://green-connect-server.onrender.com/browsetips"),
+        loader: () =>
+          fetch("https://green-connect-server.vercel.app/browsetips"),
         hydrateFallbackElement: <Loader />,
       },
-      {
-        path: "/shareTips",
-        element: <PrivateRouter>
-          <ShareTips/>
-        </PrivateRouter>,
-      },
-      {
-        path: "/myTips",
-        element: (
-          <PrivateRouter>
-            <MyTips />
-          </PrivateRouter>
-        ),
-      },
+
       {
         path: "/updateTip/:id",
         element: (
@@ -61,7 +50,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`https://green-connect-server.onrender.com/updatetip/${params.id}`),
+          fetch(
+            `https://green-connect-server.vercel.app/updatetip/${params.id}`
+          ),
         hydrateFallbackElement: <Loader />,
       },
       {
@@ -72,7 +63,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`https://green-connect-server.onrender.com/detailtip/${params.id}`),
+          fetch(
+            `https://green-connect-server.vercel.app/detailtip/${params.id}`
+          ),
         hydrateFallbackElement: <Loader />,
       },
       {
@@ -81,7 +74,33 @@ const router = createBrowserRouter([
           <PrivateRouter>
             <MyProfile />
           </PrivateRouter>
-        )
+        ),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRouter>
+        <DashboardLayout />
+      </PrivateRouter>
+    ),
+    children: [
+      {
+        path: "myTips",
+        element: (
+          <PrivateRouter>
+            <MyTips />
+          </PrivateRouter>
+        ),
+      },
+            {
+        path: "shareTips",
+        element: (
+          <PrivateRouter>
+            <ShareTips />
+          </PrivateRouter>
+        ),
       },
     ],
   },

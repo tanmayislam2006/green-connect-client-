@@ -30,7 +30,7 @@ const ShareTips = () => {
       date,
       time
     };
-    fetch("https://green-connect-server.onrender.com/sharetips", {
+    fetch("https://green-connect-server.vercel.app/sharetips", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,8 +48,8 @@ const ShareTips = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-8 px-2">
-      <div className="w-full max-w-3xl">
+    <div className="min-h-screen flex items-center justify-center py-8 px-4 max-w-7xl mx-auto">
+      <div className="w-full ">
         <h1 className="text-3xl md:text-4xl font-bold text-center text-primary mb-8">
           Share Your Best Gardening Tips with the Community
         </h1>

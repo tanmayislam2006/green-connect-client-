@@ -43,7 +43,7 @@ const GreenProvider = ({ children }) => {
   useEffect(() => {
     if (firebaseUser?.uid) {
       fetch(
-        `https://green-connect-server.onrender.com/user/${firebaseUser.uid}`
+        `https://green-connect-server.vercel.app/user/${firebaseUser.uid}`
       )
         .then((res) => res.json())
         .then((data) => {

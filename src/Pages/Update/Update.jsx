@@ -20,7 +20,7 @@ const Update = () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    fetch(`https://green-connect-server.onrender.com/updatetip/${tip._id}`, {
+    fetch(`https://green-connect-server.vercel.app/updatetip/${tip._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

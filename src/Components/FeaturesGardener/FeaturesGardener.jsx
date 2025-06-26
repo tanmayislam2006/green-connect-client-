@@ -4,7 +4,7 @@ const FeaturesGardener = () => {
   const [gardeners, setGardeners] = useState([]);
 
   useEffect(() => {
-    fetch("https://green-connect-server.onrender.com/gardener")
+    fetch("https://green-connect-server.vercel.app/gardener")
       .then((res) => res.json())
       .then((data) => {
         const active = data.filter((g) => g.status === "Active").slice(0, 6);

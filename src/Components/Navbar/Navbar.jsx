@@ -64,20 +64,9 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? "font-bold text-primary underline" : "text-gray-500"
               }
-              to={"/shareTips"}
+              to={"/dashboard"}
             >
-              Share Tips
-            </NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "font-bold text-primary underline" : "text-gray-500"
-              }
-              to={"/myTips"}
-            >
-              My Tips
+             DashBoard
             </NavLink>
           </li>
         </>
