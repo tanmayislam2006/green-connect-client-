@@ -4,12 +4,12 @@ import { Typewriter } from "react-simple-typewriter";
 const Hero = () => {
   return (
     <section
-      className="w-full  mb-16 py-16 md:py-24 flex items-center justify-center"
+      className="w-full mb-16 py-16 md:py-24 flex items-center"
       data-aos="fade-down"
       data-aos-duration="1200"
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-col-reverse lg:flex-row items-center gap-12">
-        <div className="flex-1 text-center md:text-left ">
+      <div className=" w-full flex flex-col md:flex-col-reverse lg:flex-row lg:justify-between items-center gap-10 px-8">
+        <div className="flex-1 text-center md:text-left justify-start ">
           <h1 className="text-4xl md:text-6xl font-extrabold text-primary mb-6 leading-tight drop-shadow-lg">
             <Typewriter
               cursor
@@ -37,7 +37,7 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className="flex-1 flex justify-center">
+        <div className="flex-1 flex justify-end">
           <div className="relative w-80 h-80 md:w-96 md:h-96">
             <img
               src="https://i.ibb.co/1JGqBqLH/16890.jpg"

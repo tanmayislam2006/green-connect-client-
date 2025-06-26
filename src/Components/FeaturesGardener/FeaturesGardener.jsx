@@ -7,17 +7,17 @@ const FeaturesGardener = () => {
     fetch("https://green-connect-server.vercel.app/gardener")
       .then((res) => res.json())
       .then((data) => {
-        const active = data.filter((g) => g.status === "Active").slice(0, 6);
+        const active = data.filter((g) => g.status !== "active").slice(0, 8);
         setGardeners(active);
       });
   }, []);
 
   return (
-    <section className="w-full max-w-6xl my-20 mx-auto py-10 px-4">
+    <section className="w-full max-w-7xl my-20 mx-auto py-10 px-4">
       <h2 className="text-2xl md:text-3xl font-bold text-primary mb-10 text-center">
         Featured Active Gardeners
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {gardeners.map((gardener) => (
           <div
             key={gardener.id}
@@ -36,14 +36,6 @@ const FeaturesGardener = () => {
               <span>•</span>
               <span>{gardener.gender}</span>
             </div>
-            <button
-              type="button"
-              className="mb-2 px-4 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-400 cursor-default shadow-sm"
-              disabled
-            >
-              Active
-            </button>
-            <p className="text-center mb-4 text-sm">{gardener.experiences}</p>
             <div className="text-base font-medium text-primary">
               Total Shared Tips:{" "}
               <span className="font-bold">{gardener.totalTips}</span>

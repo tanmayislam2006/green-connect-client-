@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router"; // use react-router-dom instead of just "react-router"
+import { Link, NavLink, Outlet } from "react-router"; // use react-router-dom instead of just "react-router"
 import GreenConnect from "../Components/GreenConnect/GreenConnect";
 import Footer from "../Components/Footer/Footer";
 import DashboardNavbar from "../Pages/Dashboard/DashboardNavbar";
@@ -41,9 +41,9 @@ const DashboardLayout = () => {
 
         {/* Dynamic content area */}
         <div className="">
-          <DashboardNavbar/>
+          <DashboardNavbar />
           <Outlet />
-          <Footer/>
+          <Footer />
         </div>
       </div>
 
@@ -68,6 +68,9 @@ const DashboardLayout = () => {
           <li>
             {" "}
             <GreenConnect />
+          </li>
+          <li>
+            <Link to={"/browseTips"}>All Tips</Link>
           </li>
           <li>
             <NavLink
@@ -114,6 +117,5 @@ const DashboardLayout = () => {
     </div>
   );
 };
-
 
 export default DashboardLayout;
