@@ -44,19 +44,6 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/updateTip/:id",
-        element: (
-          <PrivateRouter>
-            <Update />
-          </PrivateRouter>
-        ),
-        loader: ({ params }) =>
-          fetch(
-            `https://green-connect-server.vercel.app/updatetip/${params.id}`
-          ),
-        hydrateFallbackElement: <Loader />,
-      },
-      {
         path: "/detailtip/:id",
         element: (
           <PrivateRouter>
@@ -68,14 +55,6 @@ const router = createBrowserRouter([
             `https://green-connect-server.vercel.app/detailtip/${params.id}`
           ),
         hydrateFallbackElement: <Loader />,
-      },
-      {
-        path: "/myprofile",
-        element: (
-          <PrivateRouter>
-            <MyProfile />
-          </PrivateRouter>
-        ),
       },
     ],
   },
@@ -89,7 +68,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element:<DashboardHome/>,
+        element: <DashboardHome />,
       },
       {
         path: "myTips",
@@ -99,13 +78,35 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
       },
-            {
+      {
         path: "shareTips",
         element: (
           <PrivateRouter>
             <ShareTips />
           </PrivateRouter>
         ),
+      },
+      {
+        path: "myprofile",
+        element: (
+          <PrivateRouter>
+            <MyProfile />
+          </PrivateRouter>
+        ),
+      },
+
+      {
+        path: "updateTip/:id",
+        element: (
+          <PrivateRouter>
+            <Update />
+          </PrivateRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://green-connect-server.vercel.app/updatetip/${params.id}`
+          ),
+        hydrateFallbackElement: <Loader />,
       },
     ],
   },

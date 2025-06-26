@@ -40,7 +40,7 @@ const Update = () => {
     <div className="min-h-screen flex items-center justify-center py-8 px-2">
       <form
         onSubmit={handleSubmit}
-        className="border border-gray-300 shadow-lg rounded-xl p-8 w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-8"
+        className="border border-gray-300 shadow-lg rounded-xl p-8 w-full  grid grid-cols-1 md:grid-cols-2 gap-8"
       >
         <h2 className="md:col-span-2 text-2xl font-bold text-primary text-center mb-4">
           Update Your Garden Tip

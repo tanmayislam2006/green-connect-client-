@@ -1,10 +1,12 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router"; // use react-router-dom instead of just "react-router"
 import GreenConnect from "../Components/GreenConnect/GreenConnect";
+import Footer from "../Components/Footer/Footer";
+import DashboardNavbar from "../Pages/Dashboard/DashboardNavbar";
 
 const DashboardLayout = () => {
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open max-w-[1440px] mx-auto">
       {/* Drawer toggle checkbox (controls drawer open/close) */}
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
@@ -38,8 +40,10 @@ const DashboardLayout = () => {
         </div>
 
         {/* Dynamic content area */}
-        <div className="p-4">
+        <div className="">
+          <DashboardNavbar/>
           <Outlet />
+          <Footer/>
         </div>
       </div>
 
@@ -93,6 +97,16 @@ const DashboardLayout = () => {
               }
             >
               My Tips
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/myprofile"
+              className={({ isActive }) =>
+                isActive ? "font-bold text-primary underline" : "text-gray-500"
+              }
+            >
+              My Profile
             </NavLink>
           </li>
         </ul>

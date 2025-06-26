@@ -101,7 +101,7 @@ const MyTips = () => {
                 <td className="py-3 px-4 align-middle">{tip.availability}</td>
                 <td className="px-4 py-2 align-middle">
                   <button
-                    onClick={() => navigate(`/updateTip/${tip._id}`)}
+                    onClick={() => navigate(`/dashboard/updateTip/${tip._id}`)}
                     className="text-yellow-500 cursor-pointer mx-3 my-2"
                   >
                     <FaPen size={20} />
