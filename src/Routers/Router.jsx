@@ -14,6 +14,7 @@ import DetailsTip from "../Pages/DetailsTip/DetailsTip";
 import PrivateRouter from "./PrivateRouter";
 import MyProfile from "../Pages/MyProfile/MyProfile";
 import DashboardLayout from "../Layout/DashboardLayout";
+import DashboardHome from "../Pages/Dashboard/DasboardHome";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       </PrivateRouter>
     ),
     children: [
+      {
+        index: true,
+        element:<DashboardHome/>,
+      },
       {
         path: "myTips",
         element: (

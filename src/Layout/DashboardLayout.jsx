@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router"; // use react-router-dom instead of just "react-router"
+import GreenConnect from "../Components/GreenConnect/GreenConnect";
 
 const DashboardLayout = () => {
   return (
@@ -51,12 +52,19 @@ const DashboardLayout = () => {
         <ul className="menu p-4 w-64 min-h-full bg-base-200 text-base-content space-y-2">
           {/* Close button for small devices */}
           <div className="lg:hidden flex justify-end mb-2">
-            <label htmlFor="my-drawer-2" className="btn btn-sm btn-circle btn-ghost">
+            <label
+              htmlFor="my-drawer-2"
+              className="btn btn-sm btn-circle btn-ghost"
+            >
               ✕
             </label>
           </div>
 
           {/* Sidebar navigation links */}
+          <li>
+            {" "}
+            <GreenConnect />
+          </li>
           <li>
             <NavLink
               to="/"
@@ -92,5 +100,6 @@ const DashboardLayout = () => {
     </div>
   );
 };
+
 
 export default DashboardLayout;
