@@ -11,6 +11,13 @@ Green Connect is a modern community platform for discovering, sharing, and learn
 
 ---
 
+## 🌐 Server Repo
+
+[View Green Connect Server Repo](https://github.com/tanmayislam2006/green-connect-server.git)
+
+---
+---
+
 ## 🌐 Live Demo
 
 [View Green Connect Live](https://green-connect-app.web.app/)
