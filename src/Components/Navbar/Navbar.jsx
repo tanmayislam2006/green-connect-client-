@@ -99,14 +99,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link
-              to="/dashboard/myprofile"
-              className={({ isActive }) =>
-                isActive ? "font-bold text-primary underline" : "text-gray-500"
-              }
-            >
-              My Profile
-            </Link>
+            <Link to="/dashboard/myprofile">My Profile</Link>
           </li>
         </>
       )}

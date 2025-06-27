@@ -3,6 +3,8 @@ import { Link, NavLink, Outlet } from "react-router"; // use react-router-dom in
 import GreenConnect from "../Components/GreenConnect/GreenConnect";
 import Footer from "../Components/Footer/Footer";
 import DashboardNavbar from "../Pages/Dashboard/DashboardNavbar";
+import ThemeToggle from "../Components/Theme/ThemeToggle";
+import UserDropdown from "../Pages/Dashboard/UserDropdown";
 
 const DashboardLayout = () => {
   return (
@@ -37,6 +39,10 @@ const DashboardLayout = () => {
             </label>
           </div>
           <div className="flex-1 text-lg font-semibold px-2">Dashboard</div>
+          <div className="mr-6">
+            <ThemeToggle />
+          </div>
+          <UserDropdown />
         </div>
 
         {/* Dynamic content area */}
@@ -70,23 +76,16 @@ const DashboardLayout = () => {
             <GreenConnect />
           </li>
           <li>
-            <Link to={"/browseTips"}>All Tips</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "font-bold text-primary underline" : "text-gray-500"
-              }
-            >
-              Home
-            </NavLink>
+            <Link to={"/browseTips"}>All Tips</Link>
           </li>
           <li>
             <NavLink
               to="/dashboard/shareTips"
               className={({ isActive }) =>
-                isActive ? "font-bold text-primary underline" : "text-gray-500"
+                isActive ? "font-bold text-primary underline" : ""
               }
             >
               Share Tips
@@ -96,7 +95,7 @@ const DashboardLayout = () => {
             <NavLink
               to="/dashboard/myTips"
               className={({ isActive }) =>
-                isActive ? "font-bold text-primary underline" : "text-gray-500"
+                isActive ? "font-bold text-primary underline" : ""
               }
             >
               My Tips
@@ -106,7 +105,7 @@ const DashboardLayout = () => {
             <NavLink
               to="/dashboard/myprofile"
               className={({ isActive }) =>
-                isActive ? "font-bold text-primary underline" : "text-gray-500"
+                isActive ? "font-bold text-primary underline" : ""
               }
             >
               My Profile
