@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Loader from "../../Components/Loader/Loader";
-import { FaEye } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const BrowseTips = () => {
   const [loading, setLoading] = useState(true);
   const [tips, setTips] = useState([]);
-  const navigate = useNavigate();
   const [difficulty, setDifficulty] = useState("All");
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -24,133 +24,71 @@ const BrowseTips = () => {
   }, [difficulty]);
 
   return (
-    <div className="min-h-screen py-10 px-4 flex flex-col items-center max-w-7xl mx-auto">
+    <div className="min-h-screen py-10 px-4 max-w-7xl mx-auto">
       <h1 className="text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
         Browse Community Gardening Tips
       </h1>
 
-      {/* dropdown */}
-      <div className="mb-6 w-full max-w-5xl flex justify-end">
+      {/* Difficulty Filter */}
+      <div className="mb-8 flex justify-center">
         <select
           value={difficulty}
           onChange={(e) => setDifficulty(e.target.value)}
-          className="border border-primary rounded px-4 py-2 font-semibold "
+          className="bg-base-200 border border-primary rounded px-4 py-2 font-semibold w-full max-w-xs text-center focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
         >
-          <option className="bg-neutral" value="All">
-            All Difficulty
-          </option>
-          <option className="bg-neutral" value="Easy">
-            Easy
-          </option>
-          <option className="bg-neutral" value="Medium">
-            Medium
-          </option>
-          <option className="bg-neutral" value="Hard">
-            Hard
-          </option>
+          <option value="All">All Difficulty</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
         </select>
       </div>
 
-      <div className="w-full hidden md:block  border border-gray-200 rounded-lg overflow-x-auto">
-        {loading ? (
-          <div className="py-10 text-center">
-            <Loader />
-          </div>
-        ) : (
-          <table className="min-w-full rounded-lg shadow-lg overflow-hidden">
-            <thead>
-              <tr className="border-b border-gray-200">
-                <th className="py-3 px-4 text-left">Image</th>
-                <th className="py-3 px-4 text-left">Title</th>
-                <th className="py-3 px-4 text-left">Category</th>
-                <th className="py-3 px-4 text-left">Difficulty</th>
-                <th className="py-3 px-4 text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tips.length === 0 ? (
-                <tr>
-                  <td colSpan={5} className="py-6 text-center">
-                    No tips found for this difficulty.
-                  </td>
-                </tr>
-              ) : (
-                tips.map((tip) => (
-                  <tr key={tip._id} className="border-b border-gray-200 hover:bg-primary/10">
-                    {/* Image*/}
-                    <td className="py-3 px-4">
-                      {tip?.imageUrl ? (
-                        <img
-                          src={tip.imageUrl}
-                          alt={tip.title}
-                          className="w-16 h-16 object-cover rounded-md shadow"
-                        />
-                      ) : (
-                        <div className="w-16 h-16 flex items-center justify-center bg-gray-200 rounded-md shadow text-gray-400 text-xs">
-                          No Image
-                        </div>
-                      )}
-                    </td>
-                    {/* Title */}
-                    <td className="py-3 px-4 font-semibold">{tip.title}</td>
-                    {/* Category  */}
-                    <td className="py-3 px-4">{tip.category}</td>
-                    {/* Difficulty  */}
-                    <td className="py-3 px-4">{tip.difficulty}</td>
-                    {/* Action */}
-                    <td className="py-3 px-4 text-center">
-                      <button
-                        onClick={() => navigate(`/detailtip/${tip._id}`)}
-                        className="cursor-pointer"
-                      >
-                        <FaEye size={20} />
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        )}
-      </div>
-
-      {/* for mobile device */}
-      <div className="w-full max-w-5xl flex flex-col gap-4 md:hidden mt-6">
-        {!loading &&
-          tips.length > 0 &&
-          tips.map((tip) => (
-            <div
+      {loading ? (
+        <div className="py-10 text-center">
+          <Loader />
+        </div>
+      ) : tips.length === 0 ? (
+        <div className="py-10 text-center text-lg font-semibold">
+          No tips found for this difficulty.
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {tips.map((tip, index) => (
+            <motion.div
               key={tip._id}
-              className="rounded-lg shadow p-4 flex flex-col gap-2 border border-gray-100"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.28 }}
+              className="flex flex-col rounded-lg border border-gray-200 shadow hover:shadow-lg transition-shadow bg-base-100 overflow-hidden"
             >
-              <div className="flex items-center gap-4">
-                {tip?.imageUrl ? (
-                  <img
-                    src={tip.imageUrl}
-                    alt={tip.title}
-                    className="w-16 h-16 object-cover rounded-md shadow"
-                  />
-                ) : (
-                  <div className="w-16 h-16 flex items-center justify-center bg-gray-200 rounded-md shadow text-gray-400 text-xs">
-                    No Image
-                  </div>
-                )}
-                <div>
-                  <div className="font-bold text-lg">{tip.title}</div>
-                  <div className="text-sm ">
-                    {tip.category} • {tip.difficulty}
-                  </div>
+              {tip?.imageUrl ? (
+                <img
+                  src={tip.imageUrl}
+                  alt={tip.title}
+                  className="w-full h-48 object-cover"
+                />
+              ) : (
+                <div className="w-full h-48 flex items-center justify-center bg-base-200 text-gray-400 text-sm">
+                  No Image
                 </div>
+              )}
+
+              <div className="p-4 flex flex-col gap-2 flex-grow">
+                <h2 className="font-bold text-lg">{tip.title}</h2>
+                <p className="text-sm">
+                  {tip.category} • {tip.difficulty}
+                </p>
+                <button
+                  onClick={() => navigate(`/detailtip/${tip._id}`)}
+                  className="mt-auto bg-primary text-white px-4 py-2 rounded-md font-semibold shadow hover:bg-primary/90 transition cursor-pointer"
+                >
+                  See More Info
+                </button>
               </div>
-              <button
-                onClick={() => navigate(`/detailtip/${tip._id}`)}
-                className="mt-2 bg-primary text-white px-4 py-2 rounded-md cursor-pointer font-semibold shadow w-full"
-              >
-                See More Info
-              </button>
-            </div>
+            </motion.div>
           ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
