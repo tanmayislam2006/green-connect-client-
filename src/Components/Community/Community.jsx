@@ -9,7 +9,7 @@ const Community = () => {
   }, []);
 
   return (
-    <section className="w-full max-w-6xl mx-auto my-12 px-4 py-16 rounded-2xl  dark:bg-gray-800 shadow-lg flex flex-col-reverse  md:flex-row items-center gap-8">
+    <section className="mx-4 my-12 px-4 py-16 rounded-2xl  border-2 border-primary shadow-lg flex flex-col-reverse  md:flex-row items-center gap-8">
       <div data-aos="fade-right" data-aos-duration="1000" className="flex-1">
         <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
           Why Join Green Connect?

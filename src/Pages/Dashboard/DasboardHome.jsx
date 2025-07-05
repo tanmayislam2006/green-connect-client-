@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import { FaGlobe, FaLock, FaRegThumbsUp, FaSeedling } from "react-icons/fa";
 import GreenContext from "../../Context/GreenContext";
+import { Link } from "react-router";
 const DashboardHome = () => {
   const [myTips, setMyTips] = useState([]);
   const { firebaseUser } = use(GreenContext);
@@ -26,13 +27,13 @@ const DashboardHome = () => {
 
       {/* Stats Cards */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-        <div className="bg-base-100 rounded-lg shadow-md p-6 flex items-center gap-4 border border-gray-200">
+        <Link to={"/dashboard/myTips"} className="bg-base-100 rounded-lg shadow-md p-6 flex items-center gap-4 border border-gray-200">
           <FaSeedling className="text-3xl text-primary" />
           <div>
             <p className="text-sm">Total Tips</p>
             <p className="text-2xl font-bold">{myTips?.length}</p>
           </div>
-        </div>
+        </Link>
         <div className="bg-base-100 rounded-lg shadow-md p-6 flex items-center gap-4 border border-gray-200">
           <FaRegThumbsUp className="text-3xl text-blue-500" />
           <div>

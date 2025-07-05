@@ -21,7 +21,7 @@ const DashboardNavbar = () => {
   return (
     <>
       <nav className="navbar hidden lg:flex justify-between  bg-base-100 max-w-7xl mx-auto sticky top-0 z-10 shadow-sm">
-        <Link className="flex items-center">
+        <Link to={"/dashboard"} className="flex items-center">
           <p className="font-bold text-xl hidden md:block text-primary">
             DashBoard
           </p>

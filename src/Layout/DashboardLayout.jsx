@@ -76,7 +76,7 @@ const DashboardLayout = () => {
             <GreenConnect />
           </li>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/dashboard">My Status</Link>
           </li>
           <li>
             <Link to={"/browseTips"}>All Tips</Link>

@@ -9,20 +9,24 @@ import Slider from "../../Components/Slider/Slider";
 import Hero from "../../Components/Hero/Hero";
 import Join from "../../Components/Join/Join";
 import { BsArrowDownUp, BsArrowUp } from "react-icons/bs";
+import Offer from "../../Components/Offer/Offer";
+import Review from "../../Components/Review/Review";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <Hero />
       <Slider />
       {/* Top Tips */}
       <Trending />
       {/* features gardener */}
       <FeaturesGardener />
+      {/* offer section  */}
+      <Offer/>
       {/* Community  Section */}
       <Community />
-      {/*  Success Stories */}
-      <Success />
+      {/* review section*/}
+        <Review/>
       {/* Join Now Section */}
       <Join />
       <div className="flex justify-end my-6">

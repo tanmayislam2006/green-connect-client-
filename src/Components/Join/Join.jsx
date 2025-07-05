@@ -1,14 +1,18 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const Join = () => {
     return (
       <section 
       id='join'
-        className="w-full py-16 relative flex items-center justify-center overflow-hidden"
+        className="w-full py-16 relative flex items-center justify-center overflow-hidded"
         data-aos="fade-up"
         data-aos-duration="1200"
       >
-        <div className="max-w-3xl mx-auto text-center px-4 relative z-10">
+        <form onSubmit={(e)=>{
+          e.preventDefault()
+          toast.success("Thanks For Join Us")
+        }} className="max-w-3xl mx-auto text-center px-4 relative z-10">
           <h2 className="text-3xl md:text-4xl font-extrabold text-primary  mb-4 drop-shadow-lg">
             Ready to Grow Together?
           </h2>
@@ -30,7 +34,7 @@ const Join = () => {
               Subscribe
             </button>
           </div>
-        </div>
+        </form>
       </section>
     );
 };

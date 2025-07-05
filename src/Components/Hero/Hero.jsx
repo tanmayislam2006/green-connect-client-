@@ -4,11 +4,11 @@ import { Typewriter } from "react-simple-typewriter";
 const Hero = () => {
   return (
     <section
-      className="w-full mb-16 py-16 md:py-24 flex items-center"
+      className="w-full mb-8 py-16 flex items-center"
       data-aos="fade-down"
       data-aos-duration="1200"
     >
-      <div className=" w-full flex flex-col md:flex-col-reverse lg:flex-row lg:justify-between items-center gap-10 px-8">
+      <div className=" w-full flex flex-col-reverse lg:flex-row lg:justify-between items-center gap-10 px-8">
         <div className="flex-1 text-center md:text-left justify-start ">
           <h1 className="text-4xl md:text-6xl font-extrabold text-primary mb-6 leading-tight drop-shadow-lg">
             <Typewriter
@@ -29,12 +29,12 @@ const Hero = () => {
             greener!
           </p>
           <div className="w-2/3 mx-auto md:w-full flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button className="bg-primary text-white px-4 py-2  md:px-8 md:py-3 rounded-full font-semibold text-lg shadow transition cursor-pointer">
+            <a href="#trending" className="bg-primary text-white px-4 py-2  md:px-8 md:py-3 rounded-full font-semibold text-lg shadow transition cursor-pointer">
               Explore Trending Tips
-            </button>
-            <button className="border-2 border-primary text-primary  px-4 py-2  md:px-8 md:py-3 rounded-full font-semibold text-lg shadow transition cursor-pointer">
+            </a>
+            <a href="#join" className="border-2 border-primary text-primary  px-4 py-2  md:px-8 md:py-3 rounded-full font-semibold text-lg shadow transition cursor-pointer">
               Join Community
-            </button>
+            </a>
           </div>
         </div>
         <div className="flex-1 flex justify-end">

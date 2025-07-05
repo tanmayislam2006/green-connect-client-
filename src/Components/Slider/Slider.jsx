@@ -45,9 +45,9 @@ const Slider = () => {
               <p className="text-white text-lg mb-6">
                 Join us for a weekend of workshops, plant swaps, and expert talks!
               </p>
-              <button className="bg-primary text-white px-6 py-2 rounded-full font-semibold shadow cursor-pointer">
+              <a href='/about' className="bg-primary text-white px-6 py-2 rounded-full font-semibold shadow cursor-pointer">
                 Learn More
-              </button>
+              </a>
             </div>
           </div>
         </SwiperSlide>
@@ -69,9 +69,9 @@ const Slider = () => {
               <p className="text-white text-lg mb-6">
                 Discover how to grow your own food in small spaces. Free starter kits for attendees!
               </p>
-              <button className="bg-primary text-white px-6 py-2 rounded-full font-semibold shadow cursor-pointer">
+              <a href='#join' className="bg-primary text-white px-6 py-2 rounded-full font-semibold shadow cursor-pointer">
                 Register Now
-              </button>
+              </a>
             </div>
           </div>
         </SwiperSlide>
@@ -93,9 +93,9 @@ const Slider = () => {
               <p className="text-white text-lg mb-6">
                 Learn the basics of composting and get your free compost bin!
               </p>
-              <button className="bg-primary text-white px-6 py-2 rounded-full font-semibold shadow cursor-pointer">
+              <a href='#join' className="bg-primary text-white px-6 py-2 rounded-full font-semibold shadow cursor-pointer">
                 Join Event
-              </button>
+              </a>
             </div>
           </div>
         </SwiperSlide>
