@@ -56,6 +56,17 @@ const Navbar = () => {
           Browse Tips
         </NavLink>
       </li>
+      <li>
+        {" "}
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "font-bold text-primary underline" : "text-gray-500"
+          }
+          to={"/about"}
+        >
+          About Us
+        </NavLink>
+      </li>
       {user && (
         <>
           <li>

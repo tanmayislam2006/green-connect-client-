@@ -15,6 +15,7 @@ import PrivateRouter from "./PrivateRouter";
 import MyProfile from "../Pages/MyProfile/MyProfile";
 import DashboardLayout from "../Layout/DashboardLayout";
 import DashboardHome from "../Pages/Dashboard/DasboardHome";
+import About from "../Components/About/About";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/exploreGardener",
         element: <ExploreGardener />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/browseTips",

@@ -19,7 +19,7 @@ const Footer = () => {
       <nav>
         <h6 className="footer-title">Terms</h6>
         <Link className="link link-hover">Privecy & Policy</Link>
-        <Link className="link link-hover">About us</Link>
+        <Link to={'/about'} className="link link-hover">About us</Link>
         <Link className="link link-hover">Contact</Link>
       </nav>
       {/* Contact Info Section */}

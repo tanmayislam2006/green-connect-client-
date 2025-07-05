@@ -15,19 +15,14 @@ const Home = () => {
     <div>
       <Hero />
       <Slider />
-      {/* features gardener */}
-      <FeaturesGardener />
       {/* Top Tips */}
       <Trending />
-      {/* About Section */}
-      <About />
-
+      {/* features gardener */}
+      <FeaturesGardener />
       {/* Community  Section */}
       <Community />
-
       {/*  Success Stories */}
       <Success />
-
       {/* Join Now Section */}
       <Join />
       <div className="flex justify-end my-6">

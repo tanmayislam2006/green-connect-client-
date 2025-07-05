@@ -7,7 +7,7 @@ const About = () => {
     Aos.init({ duration: 1000, once: false });
   }, []);
   return (
-    <section className="w-full max-w-6xl mx-auto my-10 px-4 py-10 rounded-2xl dark:bg-gray-800 shadow-md flex flex-col-reverse md:flex-row items-center gap-8">
+    <section className="w-full max-w-7xl mx-auto my-10 px-4 py-10 rounded-2xl dark:bg-gray-800 shadow-md flex flex-col-reverse md:flex-row items-center gap-8">
       <div className="flex-1" data-aos="fade-right" data-aos-duration="1000">
         <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
           About Green Connect
